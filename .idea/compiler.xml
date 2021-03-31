@@ -9,5 +9,8 @@
         <module name="woodsproject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="woodsproject" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
