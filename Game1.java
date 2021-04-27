@@ -32,6 +32,30 @@ public class Game1 {
         frame.setResizable(false);
         //panel.setLayout(new GridLayout(n,n));//not a good idea
 
+        String[] columnNames = {"First Name",
+                        "Last Name",
+                        "Sport",
+                        "# of Years",
+                        "Vegetarian"};
+
+        Object[][] data = {
+            {"Kathy", "Smith",
+            "Snowboarding", new Integer(5), new Boolean(false)},
+            {"John", "Doe",
+            "Rowing", new Integer(3), new Boolean(true)},
+            {"Sue", "Black",
+            "Knitting", new Integer(2), new Boolean(false)},
+            {"Jane", "White",
+            "Speed reading", new Integer(20), new Boolean(true)},
+            {"Joe", "Brown",
+            "Pool", new Integer(10), new Boolean(false)}
+        };
+
+        JTable table = new JTable(data, columnNames);
+        table.setBounds(100,100,100,100);
+        panel.add(table);
+
+
 
         
         frame.setSize(700,700);//this needs to be at the end 
