@@ -31,7 +31,7 @@ public class Game1 {
         frame.setResizable(false);
         panel.setLayout(new GridLayout(n,n));
 
-        grid = new Grid(panel, n, player1, player2);  //initialize grid class
+        grid = new Grid(panel, n, n, player1, player2);  //initialize grid class
 
         
         frame.setSize(WoodsSimulationMenu.sizeX, WoodsSimulationMenu.sizeY);//this needs to be at the end 
