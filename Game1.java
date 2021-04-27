@@ -6,22 +6,21 @@ import java.awt.event.*;
 
 public class Game1 {
 
-    private static int n;
-    private static String player1;
-    private static String player2;
-    private static JFrame frame;
-    private static JPanel panel;
+    private Player player1;
+    private Player player2;
+    private JFrame frame;
+    private JPanel panel;
+
+    private Grid grid;
 
     public Game1(String player1,String player2, int n){
-        this.player1 = player1;
-        this.player2 = player2;
-        this.n = n;
+        this.player1 = new Player(player1);
+        this.player2 = new Player(player2);
         System.out.println(player1+" "+player2+" "+ n);
-        init();
-
+        init(n);
     }
 
-    static void init(){
+    void init(int n){
         frame = new JFrame();//the window
         frame.setTitle(" Game 1 (K-2) ");
         panel = new JPanel();//the form
@@ -32,9 +31,10 @@ public class Game1 {
         frame.setResizable(false);
         //panel.setLayout(new GridLayout(n,n));//not a good idea
 
+        grid = new Grid(panel, n, n, player1, player2);  //initialize grid class
 
         
-        frame.setSize(700,700);//this needs to be at the end 
+        frame.setSize(WoodsSimulationMenu.sizeX, WoodsSimulationMenu.sizeY);//this needs to be at the end 
     }
     
 }

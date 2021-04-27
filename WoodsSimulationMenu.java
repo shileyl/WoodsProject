@@ -7,18 +7,25 @@ import java.awt.event.*;
 public class WoodsSimulationMenu implements ActionListener{
 
     private static JFrame frame;
-    private static JPanel panel;
+    public static JPanel panel;
     private static JLabel prompt;
     //private static JLabel Title;
     private static JTextField userInput;
-    private static JButton contunue;
+    private static JButton cont;
     private static JLabel NPromps;
     private static JLabel NPromps2;
     private static JLabel coords;
     private static JTextField userInput2;
     private static JTextField userInput3;
 
+    private static Game1 game;
+    public static int sizeX, sizeY;
+    public static int x, y;
+
     public static void main(String[] args){
+        sizeX = 1000;
+        sizeY = 1000;
+
         frame = new JFrame();//the window
         frame.setTitle("Woods Simulation");
         panel = new JPanel();//the form
@@ -39,8 +46,8 @@ public class WoodsSimulationMenu implements ActionListener{
 
                 super.mouseMoved(e);
 
-                int x = e.getX();
-                int y = e.getY();
+                x = e.getX();
+                y = e.getY();
 
                 var text = String.format("x: %d, y: %d", x, y);
 
@@ -86,14 +93,14 @@ public class WoodsSimulationMenu implements ActionListener{
         panel.add(userInput3);
 
         //continue button
-        contunue =  new JButton("Contunue");
-        contunue.setVisible(false);
-        contunue.setBounds(200,360,100,25);
-        panel.add(contunue);
+        cont =  new JButton("Continue");
+        cont.setVisible(false);
+        cont.setBounds(200,360,100,25);
+        panel.add(cont);
 
 
 
-        frame.setSize(700,700);
+        frame.setSize(sizeX,sizeY);
     }
 
 
@@ -104,11 +111,11 @@ public class WoodsSimulationMenu implements ActionListener{
         System.out.println(grade.toUpperCase());
 
         switch(grade.toUpperCase()){
-            case "K": Game1();userInput.setText("");
+            case "K": StartK2Game();userInput.setText("");
                 break;
-            case "1": Game1();userInput.setText("");
+            case "1": StartK2Game();userInput.setText("");
                 break;
-            case "2": Game1();userInput.setText("");
+            case "2": StartK2Game();userInput.setText("");
                 break;
             case "3": Game2();userInput.setText("");
                 break;
@@ -138,13 +145,13 @@ public class WoodsSimulationMenu implements ActionListener{
         //create new lables asking for the names of the players and the rules of the game
         //ask how many player there will be
         NPromps.setBounds(100,150,700,200);
-        NPromps.setText("Enter the Names of the Players Septerated by a Space. You can add up to 4 Players");
+        NPromps.setText("Enter the Names of the Players Seperated by a Space. You can add up to 4 Players");
         NPromps2.setText("Enter the size of the forest. 2 Numbers, X and Y in that order.");
         userInput2.setVisible(true);
         userInput3.setVisible(true);
-        contunue.setVisible(true);
+        cont.setVisible(true);
 
-        contunue.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
+        cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
             @Override
             public void actionPerformed(ActionEvent e) {
                 String s = userInput2.getText();
@@ -160,21 +167,22 @@ public class WoodsSimulationMenu implements ActionListener{
     }
 
 
-    private void Game1() {
+    //called when user enters K, 1, or 2 as grade level
+    private void StartK2Game() {
         //create new lables asking for the names of the players and the rules of the game
-        NPromps.setText("Enter the Names of 2 Players Septerated by a Space.");
+        NPromps.setText("Enter the Names of 2 Players Seperated by a Space.");
         NPromps2.setText("Enter the size of the Forest. Only one Number. It can only be a square");
         userInput2.setVisible(true);
         userInput3.setVisible(true);
-        contunue.setVisible(true);
+        cont.setVisible(true);
         
-        contunue.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
+        cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
             @Override
             public void actionPerformed(ActionEvent e) {
                 String s = userInput2.getText();
                 String[] names = s.split(" ");
                 String snum = userInput3.getText();//convert this to an int 
-                new Game1(names[0], names[1], Integer.parseInt(snum));
+                game = new Game1(names[0], names[1], Integer.parseInt(snum));
                 //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
