@@ -30,7 +30,7 @@ public class Game1 {
         frame.add(panel);//link the 2
         panel.setLayout(null);
         frame.setResizable(false);
-        panel.setLayout(new GridLayout(n,n));
+        //panel.setLayout(new GridLayout(n,n));//not a good idea
 
 
         
