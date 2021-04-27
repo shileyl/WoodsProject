@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -10,7 +9,6 @@ public class Game1 {
     private Player player2;
     private JFrame frame;
     private JPanel panel;
-
     private Grid grid;
 
     public Game1(String player1,String player2, int n){
