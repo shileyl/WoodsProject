@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Grid {
     
@@ -103,24 +104,31 @@ public class Grid {
         Font f = new Font("Verdana", Font.PLAIN, fontSize);  //font object
 
         int y = (int) (WoodsSimulationMenu.sizeY * 0.1);   //initial y position
-        double offsetX = WoodsSimulationMenu.sizeX * 0.8;  //offset position along x axis
-        double widthX = WoodsSimulationMenu.sizeX * 0.2;   //the amount of space to work with on x axis
+        int x = (int)(WoodsSimulationMenu.sizeX * 0.8);  //offset position along x axis
+        int width = (int) (WoodsSimulationMenu.sizeX * 0.2);   //text width
+        int height = (int) (fontSize * 1.35);    //text height
 
-        for(int i = 0; i < players.length; i++) {
-            String text = players[i].name;
-            pStats[i] = new JLabel(text);
-            pStats[i].setFont(f);
-
-            int width = fontSize * text.length();
-            int x = (int) (offsetX + (widthX - width)/2.0);
-            int height = (int) (fontSize * 1.35);
-
-            pStats[i].setBounds(x, y, width, height);
-            panel.add(pStats[i]);
+        for(int i = 0; i < players.length; i += Player.numStats + 1) {  //Loop through each player
+            String text = players[i].name;    
+            createNewTextLabel(i, f, x, y, width , height, text);   //Create a label for their name
             y += height;
             
-            pStats[i].setVisible(true);
+            for(int k = 0; k < Player.numStats; k++) {    //loop through each of their stats
+                text = players[i].statNames[k] + ": " + players[i].statValues[k];    
+                createNewTextLabel(i + k, f, x, y, width , height, text);   //Create a label for their name
+                y += height;
+            }
         }
+    }
+
+    void createNewTextLabel(int index, Font f, int x, int y, int w, int h, String text) {
+        pStats[index] = new JLabel(text);
+        pStats[index].setFont(f);
+        pStats[index].setHorizontalAlignment(JTextField.CENTER);
+
+        pStats[index].setBounds(x, y, w, h);
+        panel.add(pStats[index]);
+        pStats[index].setVisible(true);
     }
 
     //check to see if the x and y coordinates entered are valid

@@ -14,6 +14,8 @@ public class Player {
     String[] statNames = {"Moves"}; 
     //A string array with the values of the stats cast to strings
     String[] statValues;
+    //length of the above arrays
+    public static int numStats = 1; 
 
     public Player(String name, int id){ 
         //set name and initialize stat values array
