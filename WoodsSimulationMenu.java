@@ -17,13 +17,13 @@ public class WoodsSimulationMenu implements ActionListener{
     private static JTextField userInput2;
     private static JTextField userInput3;
 
-    private static Game1 game;
+    private static Game game;
     public static int sizeX, sizeY;
     public static int x, y;
 
     public static void main(String[] args){
-        sizeX = 1000;
-        sizeY = 1000;
+        sizeX = 700;
+        sizeY = 700;
 
         frame = new JFrame();//the window
         frame.setTitle("Woods Simulation");
@@ -181,7 +181,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 String s = userInput2.getText();
                 String[] names = s.split(" ");
                 String snum = userInput3.getText();//convert this to an int 
-                game = new Game1(names[0], names[1], Integer.parseInt(snum));
+                game = new Game(names, "K-2 Game", Integer.parseInt(snum), Integer.parseInt(snum));
                 //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });

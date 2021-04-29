@@ -1,43 +1,72 @@
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Grid {
     
-    private Location[][] grid;
+    private Location[][] locations;
     private JButton[][] buttons;
-    JPanel panel;
 
-    public Grid(JPanel panel, int sizeX, int sizeY, Player p1, Player p2) {  //Constructor for a square grid
-        grid = new Location[sizeX][sizeY];
+    private JFrame frame;
+    private JPanel panel;
+    
+    private ImageIcon playerIcon;
+    private ImageIcon twoPlayersIcon;
+    private ImageIcon threePlayersIcon;
+    private ImageIcon fourPlayersIcon;
+
+    int sizeX, sizeY;
+
+    public Grid(String windowName, int sizeX, int sizeY) {  //Constructor for grid
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+
+        createWindow(windowName);
+        initializeGrid();
+        createIcons();
+    }
+
+    void createWindow(String windowName) {
+        frame = new JFrame();   //Create the window
+        frame.setTitle(windowName);
+
+        panel = new JPanel();   //Create a panel
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);  //Make it visable
+        frame.add(panel);  //Link the 2
+        panel.setLayout(null);
+        frame.setResizable(false);
+        //panel.setLayout(new GridLayout(n,n));//not a good idea
+        
+        frame.setSize(WoodsSimulationMenu.sizeX, WoodsSimulationMenu.sizeY);//this needs to be at the end 
+    }
+
+    void initializeGrid() {
+        locations = new Location[sizeX][sizeY];
         buttons = new JButton[sizeX][sizeY];
-        this.panel = panel;
 
         int buttonSizeX = (WoodsSimulationMenu.sizeX - 100)/sizeX;
         int buttonSizeY = (WoodsSimulationMenu.sizeY - 100)/sizeY;
 
-        ImageIcon icon = createImageIcon("Assets/boy.png","This is a Boy");
-
+        //Loop through x and y coordinates
         for(int y = 0; y < sizeY; y++) {
             for(int x = 0; x < sizeX; x++) {
-                grid[x][y] = new Location();
+                locations[x][y] = new Location();   //Create a new Location and Button object
                 buttons[x][y] = new JButton();
                 
-                
+                buttons[x][y].setVisible(true);
+                buttons[x][y].setBounds(50 + buttonSizeX * x, 50 + buttonSizeY * y, buttonSizeX, buttonSizeY);
 
-                
-                JButton button = buttons[x][y];
-                button = new JButton(icon);
-                button.setVisible(true);
-                button.setBounds(50 + buttonSizeX * x, 50 + buttonSizeY * y, buttonSizeX, buttonSizeY);
-                //System.out.println("x: " + (50 + buttonSizeX * x) + " y: " + (50 + buttonSizeY * y));
-                panel.add(button);
+                panel.add(buttons[x][y]);
             }
         }
+    }
 
-        grid[0][0].p = p1;            //Player at location 0,0 is player 1
-        grid[sizeX-1][sizeY-1].p = p2;  //Player at location size-1, size-1 is player 2
+    void createIcons() {
+        playerIcon = createImageIcon("Assets/boy.png","This is a Boy");
+        twoPlayersIcon = createImageIcon("Assets/boy.png","This is a Boy");
     }
 
     protected ImageIcon createImageIcon(String path,String description) {
@@ -48,6 +77,53 @@ public class Grid {
             System.err.println("Couldn't find file: " + path);
             return null;
         }
-}
+    }
 
+    //check to see if the x and y coordinates entered are valid
+    public boolean isValidPosition(int x, int y) {
+        if(x < 0 || y < 0)
+            return false;
+        if(x > sizeX - 1 || y > sizeY - 1)
+            return false;
+
+        return true;
+    }
+
+    //completely clear grid
+    public void clear() {
+        for(int y = 0; y < sizeY; y++) {
+            for(int x = 0; x < sizeX; x++) {
+                locations[x][y].reset();
+            }
+        }
+    }
+
+    //update locations based on where the players are
+    public void addPlayers(Player[] players) {
+        for(int i = 0; i < players.length; i++) {
+            Player p = players[i];
+            locations[p.x][p.y].addPlayer();
+        }
+    }
+
+    //draw the grid
+    public void drawGrid() {
+        for(int y = 0; y < sizeY; y++) {
+            for(int x = 0; x < sizeX; x++) {
+
+                int playersAtCoordinate = locations[x][y].numPlayers;
+
+                if(playersAtCoordinate == 0)
+                    buttons[x][y].setIcon(null);
+                if(playersAtCoordinate == 1)
+                    buttons[x][y].setIcon(playerIcon);
+                if(playersAtCoordinate == 2)
+                    buttons[x][y].setIcon(twoPlayersIcon);
+                if(playersAtCoordinate == 3)
+                    buttons[x][y].setIcon(threePlayersIcon);
+                if(playersAtCoordinate == 4)
+                    buttons[x][y].setIcon(fourPlayersIcon);
+            }
+        }
+    }
 }
