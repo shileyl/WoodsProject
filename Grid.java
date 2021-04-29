@@ -121,14 +121,19 @@ public class Grid {
             y += height;
             
             for(int k = 0; k < Player.numStats; k++) {    //loop through each of their stats
-                text = players[i].statNames[k] + ": " + players[i].statValues[k];    
-                createNewTextLabel(index + k, f, x, y, width , height, text);   //Create a label for their name
+                text = players[i].statNames[k] + ": " + players[i].statValues[k];  
+                System.out.println(text);  
+                createNewTextLabel(index + k + 1, f, x, y, width , height, text);   //Create a label for their name
                 y += height;
             }
         }
     }
 
     void createNewTextLabel(int index, Font f, int x, int y, int w, int h, String text) {
+        if(pStats[index] != null) {
+            pStats[index].setText(text);
+            return;
+        }
         pStats[index] = new JLabel(text);
         pStats[index].setFont(f);
         pStats[index].setHorizontalAlignment(JTextField.CENTER);

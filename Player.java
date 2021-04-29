@@ -43,6 +43,7 @@ public class Player {
         x += rand1;
         y += rand2;
         moves++;
+        updateStats();
     }
 
     void generateRandomNumbers(Random r) {
