@@ -114,14 +114,15 @@ public class Grid {
         int width = (int) (WoodsSimulationMenu.sizeX * 0.2);   //text width
         int height = (int) (fontSize * 1.35);    //text height
 
-        for(int i = 0; i < players.length * (Player.numStats + 1); i += Player.numStats + 1) {  //Loop through each player
+        for(int i = 0; i < players.length; i++) {  //Loop through each player
+            int index = i * (Player.numStats + 1);
             String text = players[i].name;    
-            createNewTextLabel(i, f, x, y, width , height, text);   //Create a label for their name
+            createNewTextLabel(index, f, x, y, width , height, text);   //Create a label for their name
             y += height;
             
             for(int k = 0; k < Player.numStats; k++) {    //loop through each of their stats
                 text = players[i].statNames[k] + ": " + players[i].statValues[k];    
-                createNewTextLabel(i + k, f, x, y, width , height, text);   //Create a label for their name
+                createNewTextLabel(index + k, f, x, y, width , height, text);   //Create a label for their name
                 y += height;
             }
         }
