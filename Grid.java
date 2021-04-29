@@ -16,6 +16,7 @@ public class Grid {
     private ImageIcon twoPlayersIcon;
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
+    private ImageIcon woodsButtons; 
 
     int sizeX, sizeY;
 
@@ -54,7 +55,7 @@ public class Grid {
         for(int y = 0; y < sizeY; y++) {
             for(int x = 0; x < sizeX; x++) {
                 locations[x][y] = new Location();   //Create a new Location and Button object
-                buttons[x][y] = new JButton();
+                buttons[x][y] = new JButton(woodsButtons);
                 
                 buttons[x][y].setVisible(true);
                 buttons[x][y].setBounds(50 + buttonSizeX * x, 50 + buttonSizeY * y, buttonSizeX, buttonSizeY);
@@ -67,6 +68,7 @@ public class Grid {
     void createIcons() {
         playerIcon = createImageIcon("Assets/boy.png","This is a Boy");
         twoPlayersIcon = createImageIcon("Assets/boy.png","This is a Boy");
+        woodsButtons = createImageIcon("Assets/Forest2.jpg","this is the woods");
     }
 
     protected ImageIcon createImageIcon(String path,String description) {
@@ -114,7 +116,7 @@ public class Grid {
                 int playersAtCoordinate = locations[x][y].numPlayers;
 
                 if(playersAtCoordinate == 0)
-                    buttons[x][y].setIcon(null);
+                    buttons[x][y].setIcon(woodsButtons);
                 if(playersAtCoordinate == 1)
                     buttons[x][y].setIcon(playerIcon);
                 if(playersAtCoordinate == 2)
