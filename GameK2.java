@@ -11,4 +11,11 @@ public class GameK2 extends Game {
     protected void gameUpdate() {
         super.gameUpdate();
     }
+
+    protected boolean checkForWin() {
+        if(players[0].x == players[1].x)
+            if(players[0].y == players[1].y)
+                return true;
+        return false;
+    }
 }

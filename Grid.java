@@ -98,7 +98,7 @@ public class Grid {
     }
 
     public void makeStatsSection(Player[] players) {
-        int fontSize = 14;
+        int fontSize = 20;
         pStats = new JLabel[players.length];  //an array of JLabels
         Font f = new Font("Verdana", Font.PLAIN, fontSize);  //font object
 

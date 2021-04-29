@@ -43,6 +43,13 @@ public class Game {
     }
 
     protected void gameUpdate() {
+        if(checkForWin()) {
+            //cancel game loop and return
+            timer.stop();
+
+            //need to make some sort of happy graphic display here
+            return;
+        }
         //move players randomly
         for(int i = 0; i < players.length; i++) {
             players[i].move(rand, grid);
@@ -53,9 +60,14 @@ public class Game {
     }
     
     protected void updateGrid() {
+        //execute functions on grid class to update display
         grid.clear();
         grid.addPlayers(players);
         grid.drawGrid();
         grid.makeStatsSection(players);
+    }
+
+    protected boolean checkForWin() {
+        return false; //logic overriden in parent classes
     }
 }
