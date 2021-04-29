@@ -15,7 +15,6 @@ public class Game {
         rand = new Random();
         grid = new Grid(windowName, boardSizeX, boardSizeY);
         initializePlayers(playerNames);
-        updateGrid();
     }
 
     protected void initializePlayers(String[] playerNames) {

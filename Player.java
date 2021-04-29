@@ -2,6 +2,8 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+//Player class keeps track of position and stats for each player
+
 public class Player {
     public String name;
     public ImageIcon image;
@@ -22,6 +24,7 @@ public class Player {
         this.name = name;
         this.image = Util.createImageIcon(this, "Assets/boy" + id + ".png", "This is a boy");
         statValues = new String[statNames.length];
+        updateStats();
     }
 
     public void setLocation(int x, int y) {

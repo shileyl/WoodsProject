@@ -10,6 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
+//Grid class is responsible for managing the Java Swing variables and anything related to displaying the game information
+
+
 public class Grid {
     
     private Location[][] locations;
@@ -100,15 +104,17 @@ public class Grid {
 
     public void makeStatsSection(Player[] players) {
         int fontSize = 20;
-        pStats = new JLabel[players.length];  //an array of JLabels
         Font f = new Font("Verdana", Font.PLAIN, fontSize);  //font object
+
+        if(pStats == null)
+            pStats = new JLabel[players.length * (Player.numStats + 1)];  //an array of JLabels
 
         int y = (int) (WoodsSimulationMenu.sizeY * 0.1);   //initial y position
         int x = (int)(WoodsSimulationMenu.sizeX * 0.8);  //offset position along x axis
         int width = (int) (WoodsSimulationMenu.sizeX * 0.2);   //text width
         int height = (int) (fontSize * 1.35);    //text height
 
-        for(int i = 0; i < players.length; i += Player.numStats + 1) {  //Loop through each player
+        for(int i = 0; i < players.length * (Player.numStats + 1); i += Player.numStats + 1) {  //Loop through each player
             String text = players[i].name;    
             createNewTextLabel(i, f, x, y, width , height, text);   //Create a label for their name
             y += height;
