@@ -21,7 +21,7 @@ public class Grid {
     private ImageIcon twoPlayersIcon;
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
-    private ImageIcon woodsButtons;
+    private ImageIcon woodsButtons; 
 
     int sizeX, sizeY;
     double buttonSize;
@@ -89,8 +89,8 @@ public class Grid {
 
     void createIcons() {
         playerIcon = createImageIcon("Assets/boy.png","This is a Boy");
-        twoPlayersIcon = createImageIcon("Assets/steve.png","This is a Steve");
-        woodsButtons = createImageIcon("Assets/Forest2.png","This is the woods");
+        twoPlayersIcon = createImageIcon("Assets/boy.png","This is a Boy");
+        woodsButtons = createImageIcon("Assets/Forest2.jpg","this is the woods");
     }
 
     protected ImageIcon createImageIcon(String path,String description) {
