@@ -4,26 +4,21 @@ import java.awt.event.*;
 
 public class Game {
 
-    private Player[] players;
-    private Grid grid;
+    protected Player[] players;
+    protected Grid grid;
 
-    boolean gameOver = false;
-    Random rand;
-    Timer timer;
+    protected boolean gameOver = false;
+    protected Random rand;
+    protected Timer timer;
 
     public Game(String[] playerNames, String windowName, int boardSizeX, int boardSizeY){
         rand = new Random();
         grid = new Grid(windowName, boardSizeX, boardSizeY);
         initializePlayers(playerNames);
-        players[0].setLocation(0, 0);
-        players[1].setLocation(boardSizeX - 1, boardSizeY - 1);
         updateGrid();
-        
-
-        startGame();
     }
 
-    void initializePlayers(String[] playerNames) {
+    protected void initializePlayers(String[] playerNames) {
         players = new Player[playerNames.length];
 
         for(int i = 0; i < players.length; i++) {
@@ -32,7 +27,7 @@ public class Game {
     }
 
     //starts the game update loop
-    void startGame() {
+    protected void startGame() {
         //create game update loop
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -47,7 +42,7 @@ public class Game {
         //play music
     }
 
-    void gameUpdate() {
+    protected void gameUpdate() {
         //move players randomly
         for(int i = 0; i < players.length; i++) {
             players[i].move(rand, grid);
@@ -57,9 +52,10 @@ public class Game {
         updateGrid();
     }
     
-    void updateGrid() {
+    protected void updateGrid() {
         grid.clear();
         grid.addPlayers(players);
         grid.drawGrid();
+        grid.makeStatsSection(players);
     }
 }

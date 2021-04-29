@@ -159,7 +159,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 String[] snums = userInput3.getText().split(" ");//convert this to an int this is gona be 2 ints
                 int x = Integer.parseInt(snums[0]);
                 int y = Integer.parseInt(snums[1]);
-                new Game2(names,x,y);
+                game = new Game25(names, "K-2 Game", x, y);
             }
         });
         //if(s==null||snum==null){ System.out.println("USER ERROR 0002");}
@@ -181,7 +181,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 String s = userInput2.getText();
                 String[] names = s.split(" ");
                 String snum = userInput3.getText();//convert this to an int 
-                game = new Game(names, "K-2 Game", Integer.parseInt(snum), Integer.parseInt(snum));
+                game = new GameK2(names, "K-2 Game", Integer.parseInt(snum), Integer.parseInt(snum));
                 //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });

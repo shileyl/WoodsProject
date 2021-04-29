@@ -6,23 +6,33 @@ public class Player {
     int moves = 0;
     int rand1, rand2;
 
+    //A string array with a list of the names of the different stats to be displayed
+    String[] statNames = {"Moves"}; 
+    //A string array with the values of the stats cast to strings
+    String[] statValues;
+
     public Player(String name){ 
+        //set name and initialize stat values array
         this.name = name;
+        statValues = new String[statNames.length];
     }
 
     public void setLocation(int x, int y) {
+        //set the location of this player
         this.x = x;
         this.y = y;
     }
 
     public void move(Random r, Grid g) {
         do {
-            generateRandomNumbers(r);
+            generateRandomNumbers(r);  //generate random x and y values to move
         } 
-        while(!g.isValidPosition(x + rand1, y + rand2));
+        while(!g.isValidPosition(x + rand1, y + rand2));   //check if those values result in valid grid coordinates
 
+        //update the x and y coordinates along with the amount of moves
         x += rand1;
         y += rand2;
+        moves++;
     }
 
     void generateRandomNumbers(Random r) {
@@ -34,5 +44,9 @@ public class Player {
             rand1 = r.nextInt(3) - 1;
             rand2 = r.nextInt(3) - 1;
         }
+    }
+
+    void updateStats() {
+        statValues[0] = "" + moves;
     }
 }
