@@ -17,7 +17,6 @@ public class Grid {
     private JFrame frame;
     private JPanel panel;
     
-    private ImageIcon playerIcon;
     private ImageIcon twoPlayersIcon;
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
@@ -88,26 +87,14 @@ public class Grid {
     }
 
     void createIcons() {
-        playerIcon = createImageIcon("Assets/boy.png","This is a Boy");
-        twoPlayersIcon = createImageIcon("Assets/boy.png","This is a Boy");
-        woodsButtons = createImageIcon("Assets/Forest2.jpg","this is the woods");
-    }
-
-    protected ImageIcon createImageIcon(String path,String description) {
-        //get the url of an image
-        java.net.URL imgURL = getClass().getResource(path);
-        if (imgURL != null) {
-            //create an image icon object if the image file was found
-            ImageIcon ii = new ImageIcon(imgURL, description);
-            //rescale the image to the button size
-            Image newImg = ii.getImage().getScaledInstance((int)buttonSize, (int)buttonSize, java.awt.Image.SCALE_SMOOTH);
-            ii = new ImageIcon(newImg); //re-initialize the image icon object with the newly scaled image
-            return ii;
-        } else {
-            //print out an error if the file could not be found
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
+        twoPlayersIcon = Util.createImageIcon(this, "Assets/2boys.png","this is a 2 boys");
+        twoPlayersIcon = Util.scaleImageIcon(twoPlayersIcon, buttonSize);
+        threePlayersIcon = Util.createImageIcon(this, "Assets/3boys.png","this is 3 boys");
+        threePlayersIcon = Util.scaleImageIcon(threePlayersIcon, buttonSize);
+        threePlayersIcon = Util.createImageIcon(this, "Assets/4boys.png","this is 4 boys");
+        threePlayersIcon = Util.scaleImageIcon(threePlayersIcon, buttonSize);
+        woodsButtons = Util.createImageIcon(this, "Assets/Forest2.jpg","this is the woods");
+        woodsButtons = Util.scaleImageIcon(woodsButtons, buttonSize);
     }
 
     public void makeStatsSection(Player[] players) {
@@ -159,7 +146,7 @@ public class Grid {
     public void addPlayers(Player[] players) {
         for(int i = 0; i < players.length; i++) {
             Player p = players[i];
-            locations[p.x][p.y].addPlayer();  //increase the number of players at this location by 1
+            locations[p.x][p.y].addPlayer(p);  //increase the number of players at this location by 1
         }
     }
 
@@ -174,7 +161,7 @@ public class Grid {
                 if(playersAtCoordinate == 0)
                     buttons[x][y].setIcon(woodsButtons);
                 if(playersAtCoordinate == 1)
-                    buttons[x][y].setIcon(playerIcon);
+                    buttons[x][y].setIcon(Util.scaleImageIcon(locations[x][y].image, buttonSize));
                 if(playersAtCoordinate == 2)
                     buttons[x][y].setIcon(twoPlayersIcon);
                 if(playersAtCoordinate == 3)

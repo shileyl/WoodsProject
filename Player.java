@@ -1,19 +1,24 @@
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 public class Player {
     public String name;
+    public ImageIcon image;
     public int x, y;
-    int moves = 0;
-    int rand1, rand2;
+
+    private int moves = 0;
+    private int rand1, rand2;
 
     //A string array with a list of the names of the different stats to be displayed
     String[] statNames = {"Moves"}; 
     //A string array with the values of the stats cast to strings
     String[] statValues;
 
-    public Player(String name){ 
+    public Player(String name, int id){ 
         //set name and initialize stat values array
         this.name = name;
+        this.image = Util.createImageIcon(this, "Assets/boy" + id + ".png", "This is a boy");
         statValues = new String[statNames.length];
     }
 

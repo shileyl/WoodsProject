@@ -22,7 +22,7 @@ public class Game {
         players = new Player[playerNames.length];
 
         for(int i = 0; i < players.length; i++) {
-            players[i] = new Player(playerNames[i]);
+            players[i] = new Player(playerNames[i], i+1);
         }
     }
 
@@ -36,7 +36,7 @@ public class Game {
         };
 
         //Create a timer object that calls actionPerformed on the ActionListener every 1000 milliseconds
-        timer = new Timer(1000 ,taskPerformer);
+        timer = new Timer(1000, taskPerformer);
         timer.start();
 
         //play music
