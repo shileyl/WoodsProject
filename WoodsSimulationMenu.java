@@ -2,11 +2,14 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyEvent;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.event.MouseInputAdapter;
 
@@ -104,11 +107,10 @@ public class WoodsSimulationMenu implements ActionListener{
         cont.setBounds(200,360,100,25);
         panel.add(cont);
 
-
+        createMovementDropDown();
 
         frame.setSize(sizeX,sizeY);
     }
-
 
 
     @Override
@@ -212,5 +214,22 @@ public class WoodsSimulationMenu implements ActionListener{
         });
 
         //if(s==null||snum==null){ System.out.println("USER ERROR 0003");}
+    }
+
+    private static void createMovementDropDown() {
+        //Create a button for each movement procedure
+        JRadioButton randomMP = new JRadioButton("Random");
+        randomMP.setMnemonic(KeyEvent.VK_R);
+        randomMP.setActionCommand("Random");  //to be honest i dont know what this does
+        randomMP.setSelected(true);
+
+        JRadioButton otherMP = new JRadioButton("Other");
+        otherMP.setMnemonic(KeyEvent.VK_O);
+        otherMP.setActionCommand("other");
+
+        //group the radio buttons
+        ButtonGroup group = new ButtonGroup();
+        group.add(randomMP);
+        group.add(otherMP);
     }
 }
