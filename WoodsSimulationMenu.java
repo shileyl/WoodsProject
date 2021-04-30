@@ -29,8 +29,8 @@ public class WoodsSimulationMenu implements ActionListener{
     public static int x, y;
 
     public static void main(String[] args){
-        sizeX = 1920;
-        sizeY = 1080;
+        sizeX = 700;
+        sizeY = 700;
 
         frame = new JFrame();//the window
         frame.setTitle("Woods Simulation");

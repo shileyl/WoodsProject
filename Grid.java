@@ -1,7 +1,6 @@
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,7 +13,7 @@ import javax.swing.JTextField;
 public class Grid {
     
     private Location[][] locations;
-    private OurButtons[][] buttons;
+    private Button[][] buttons;
 
     private JFrame frame;
     private JPanel panel;
@@ -25,6 +24,7 @@ public class Grid {
     private ImageIcon woodsButtons; 
 
     int sizeX, sizeY;
+    int mouseX, mouseY;
     double buttonSize;
 
     private JLabel[] pStats;
@@ -48,22 +48,22 @@ public class Grid {
         frame.add(panel);  //Link the 2
         panel.setLayout(null);
         frame.setResizable(false);
-        //panel.setLayout(new GridLayout(n,n));//not a good idea
         
         frame.setSize(WoodsSimulationMenu.sizeX, WoodsSimulationMenu.sizeY);//this needs to be at the end 
     }
 
     void initializeGrid() {
         locations = new Location[sizeX][sizeY];
-        buttons = new OurButtons[sizeX][sizeY];
+        buttons = new Button[sizeX][sizeY];
 
         //some suspicious math to calculate grid size
         double offsetSize = 0.04;
         double offsetX, offsetY;
         double boardSizeX = 0.8 * WoodsSimulationMenu.sizeX;
         double boardSizeY = WoodsSimulationMenu.sizeY;
+        double ratio = (double) WoodsSimulationMenu.sizeY / WoodsSimulationMenu.sizeX;
 
-        if((1.0/0.8 * sizeX) > sizeY) {
+        if((1.0/0.8 * ratio * sizeX) > sizeY) {
             offsetX = 2.0 * offsetSize * boardSizeX;
             buttonSize = (boardSizeX - offsetX) / sizeX;
             offsetY = (boardSizeY - (buttonSize * sizeY)) / 2.0;
@@ -77,12 +77,11 @@ public class Grid {
         for(int y = 0; y < sizeY; y++) {
             for(int x = 0; x < sizeX; x++) {
                 locations[x][y] = new Location();   //Create a new Location and Button object
-                buttons[x][y] = new OurButtons(x, y);
+                buttons[x][y] = new Button(x, y);
                 
                 buttons[x][y].setVisible(true);
                 buttons[x][y].setBounds((int)(offsetX + buttonSize * x), (int)(offsetY + buttonSize * y),
                  (int)buttonSize, (int)buttonSize);
-
                 panel.add(buttons[x][y]);
             }
         }
@@ -119,7 +118,6 @@ public class Grid {
             
             for(int k = 0; k < Player.numStats; k++) {    //loop through each of their stats
                 text = players[i].statNames[k] + ": " + players[i].statValues[k];  
-                System.out.println(text);  
                 createNewTextLabel(index + k + 1, f, x, y, width , height, text);   //Create a label for their name
                 y += height;
             }
