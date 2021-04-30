@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameOver {
 
@@ -8,10 +10,11 @@ public class GameOver {
     private  JButton Imagebutton;
     private ImageIcon image;
 
+/* //this is just for testing the class
     public static void main(String[]args){
         new GameOver();
     }
-
+*/
 
     public GameOver() {
         frame = new JFrame();
@@ -28,6 +31,11 @@ public class GameOver {
         Imagebutton = new JButton(image); 
         Imagebutton.setBounds(0,0,300,300);
         panel.add(Imagebutton);
+        Imagebutton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("The button has been clicked");;
+            }
+        });
 
         frame.setSize(300, 300);
     }
