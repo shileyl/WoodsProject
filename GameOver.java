@@ -34,6 +34,8 @@ public class GameOver {
         Imagebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("The button has been clicked");
+                WoodsSimulationMenu.main(null);
+                frame.dispose();
             }
         });
 

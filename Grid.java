@@ -103,8 +103,8 @@ public class Grid {
         twoPlayersIcon = Util.scaleImageIcon(twoPlayersIcon, buttonSize);
         threePlayersIcon = Util.createImageIcon(this, "Assets/3boys.png","this is 3 boys");
         threePlayersIcon = Util.scaleImageIcon(threePlayersIcon, buttonSize);
-        threePlayersIcon = Util.createImageIcon(this, "Assets/4boys.png","this is 4 boys");
-        threePlayersIcon = Util.scaleImageIcon(threePlayersIcon, buttonSize);
+        fourPlayersIcon = Util.createImageIcon(this, "Assets/4boys.png","this is 4 boys");
+        fourPlayersIcon = Util.scaleImageIcon(fourPlayersIcon, buttonSize);
         woodsButtons = Util.createImageIcon(this, "Assets/Forest2.jpg","this is the woods");
         woodsButtons = Util.scaleImageIcon(woodsButtons, buttonSize);
     }
