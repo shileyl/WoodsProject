@@ -13,7 +13,7 @@ public class Button extends JButton {
 
         addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println(xPos + " " + yPos);
+                Game.instance.playerPlaced(xPos, yPos);
             }
         });
     }
