@@ -161,6 +161,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 int x = Integer.parseInt(snums[0]);
                 int y = Integer.parseInt(snums[1]);
                 game = new Game68(names, "6-8 Game", x, y);
+                frame.dispose();//closes window after new one opens
             }
         });
         //if(s==null||snum==null){ System.out.println("USER ERROR 0002");}
@@ -188,6 +189,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 int x = Integer.parseInt(snums[0]);
                 int y = Integer.parseInt(snums[1]);
                 game = new Game35(names, "3-5 Game", x, y);
+                frame.dispose();//closes window after new one opens
             }
         });
         //if(s==null||snum==null){ System.out.println("USER ERROR 0002");}
@@ -210,6 +212,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 String[] names = s.split(" ");
                 String snum = userInput3.getText();//convert this to an int 
                 game = new GameK2(names, "K-2 Game", Integer.parseInt(snum), Integer.parseInt(snum));
+                frame.dispose();//closes window after new one opens
                 //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });

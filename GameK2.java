@@ -18,6 +18,7 @@ public class GameK2 extends Game {
         if(players[0].x == players[1].x)
             if(players[0].y == players[1].y){
                 new GameOver();
+                grid.terminateFrame();
                 return true;
             }
         return false;

@@ -207,4 +207,9 @@ public class Grid {
         if(playersAtCoordinate == 4)
             buttons[x][y].setIcon(fourPlayersIcon);
     }
+
+    void terminateFrame() {
+        frame.dispose();//closes
+
+    }
 }

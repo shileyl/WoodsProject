@@ -36,6 +36,7 @@ public class Game68 extends Game {
                 return false;
             }
         }
+        grid.terminateFrame();
         new GameOver();
         return true;
 
