@@ -144,8 +144,8 @@ public class WoodsSimulationMenu implements ActionListener{
 
 
     private void Game3() {
-        NPromps.setBounds(100,150,700,200);
-        NPromps.setText("Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and \n pick the starting positions in the next window");
+        NPromps.setBounds(100,130,700,200);
+        NPromps.setText("<html>Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and<br/>pick the starting positions in the next window</html>");
         NPromps2.setText("Enter the size of the forest. 2 Numbers, X and Y in that order.");
         userInput2.setVisible(true);
         userInput3.setVisible(true);
@@ -235,5 +235,11 @@ public class WoodsSimulationMenu implements ActionListener{
         ButtonGroup group = new ButtonGroup();
         group.add(randomMP);
         group.add(otherMP);
+
+        //JPanel radioPanel = new JPanel(new GridLayout(0, 1));
+        //radioPanel.add(randomMP);
+        //radioPanel.add(otherMP);
+
+        //panel.add(group);
     }
 }
