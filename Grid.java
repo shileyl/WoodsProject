@@ -174,25 +174,34 @@ public class Grid {
         }
     }
 
+    //place a player at a position x, y
+    public void updateGrid(int x, int y, Player p) {
+        locations[x][y].addPlayer(p);  //increase the number of players at this location by 1
+        drawCoordinate(x, y);          //add the icon at the players location
+    }
+
     //draw the grid
     public void drawGrid() {
         for(int y = 0; y < sizeY; y++) {
             for(int x = 0; x < sizeX; x++) {   //loop through grid coordinates
-
-                int playersAtCoordinate = locations[x][y].numPlayers;
-
-                //set the proper image icon based on the amount of players at this location
-                if(playersAtCoordinate == 0)
-                    buttons[x][y].setIcon(woodsButtons);
-                if(playersAtCoordinate == 1)
-                    buttons[x][y].setIcon(Util.scaleImageIcon(locations[x][y].image, buttonSize));
-                if(playersAtCoordinate == 2)
-                    buttons[x][y].setIcon(twoPlayersIcon);
-                if(playersAtCoordinate == 3)
-                    buttons[x][y].setIcon(threePlayersIcon);
-                if(playersAtCoordinate == 4)
-                    buttons[x][y].setIcon(fourPlayersIcon);
+                drawCoordinate(x, y);
             }
         }
+    }
+
+    void drawCoordinate(int x, int y) {
+        int playersAtCoordinate = locations[x][y].numPlayers;
+
+        //set the proper image icon based on the amount of players at this location
+        if(playersAtCoordinate == 0)
+            buttons[x][y].setIcon(woodsButtons);
+        if(playersAtCoordinate == 1)
+            buttons[x][y].setIcon(Util.scaleImageIcon(locations[x][y].image, buttonSize));
+        if(playersAtCoordinate == 2)
+            buttons[x][y].setIcon(twoPlayersIcon);
+        if(playersAtCoordinate == 3)
+            buttons[x][y].setIcon(threePlayersIcon);
+        if(playersAtCoordinate == 4)
+            buttons[x][y].setIcon(fourPlayersIcon);
     }
 }

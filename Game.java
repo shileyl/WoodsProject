@@ -11,9 +11,20 @@ public class Game {
     protected Random rand;
     protected Timer timer;
 
+    protected int numPlayers;
+    protected int numPlayersPlaced = 0;
+    public boolean allPlayersPlaced = false;
+
+    public static Game instance;
+
     public Game(String[] playerNames, String windowName, int boardSizeX, int boardSizeY){
         rand = new Random();
         grid = new Grid(windowName, boardSizeX, boardSizeY);
+
+        instance = this;
+
+        //the amount of players
+        numPlayers = playerNames.length;
         initializePlayers(playerNames);
     }
 
@@ -66,7 +77,14 @@ public class Game {
         grid.makeStatsSection(players);
     }
 
+    protected void updateGrid(int x, int y, Player p) {
+        grid.updateGrid(x, y, p);
+    }
+
     protected boolean checkForWin() {
         return false; //logic overriden in parent classes
     }
+
+    //called when a player is added to the grid
+    protected void playerPlaced(int x, int y) {}
 }
