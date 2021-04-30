@@ -19,7 +19,7 @@ public class Game68 extends Game {
 
     protected boolean checkForWin() {
         for(int i =0;i<players.length;i++){
-            if((players[0].x != players[i].x) && (players[0].y != players[i].y)){
+            if((players[0].x != players[i].x) || (players[0].y != players[i].y)){
                 return false;
             }
         }
