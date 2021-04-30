@@ -1,5 +1,8 @@
 public class Game25 extends Game {
     
+    protected int [] x;
+    protected int [] y;
+
     //Game class for grades 2 through 5
     public Game25(String[] playerNames, String windowName, int boardSizeX, int boardSizeY){
         super(playerNames, windowName, boardSizeX, boardSizeY);
@@ -13,4 +16,15 @@ public class Game25 extends Game {
     protected void gameUpdate() {
         super.gameUpdate();
     }
+
+    protected boolean checkForWin() {
+        for(int i =0;i<players.length;i++){
+            if((players[0].x != players[i].x) && (players[0].y != players[i].y)){
+                return false;
+            }
+        }
+        return true;
+
+    }
+
 }

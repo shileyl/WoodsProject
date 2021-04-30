@@ -19,5 +19,6 @@ public class GameK2 extends Game {
             if(players[0].y == players[1].y)
                 return true;
         return false;
+
     }
 }
