@@ -10,11 +10,11 @@ public class GameOver {
     private  JButton Imagebutton;
     private ImageIcon image;
 
-/* //this is just for testing the class
+//this is just for testing the class
     public static void main(String[]args){
         new GameOver();
     }
-*/
+
 
     public GameOver() {
         frame = new JFrame();
@@ -33,7 +33,7 @@ public class GameOver {
         panel.add(Imagebutton);
         Imagebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("The button has been clicked");;
+                System.out.println("The button has been clicked");
             }
         });
 

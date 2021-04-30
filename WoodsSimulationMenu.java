@@ -31,6 +31,7 @@ public class WoodsSimulationMenu implements ActionListener{
     public static int sizeX, sizeY;
     public static int x, y;
 
+
     public static void main(String[] args){
         sizeX = 700;
         sizeY = 700;
