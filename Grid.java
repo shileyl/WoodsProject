@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 public class Grid {
     
     private Location[][] locations;
-    private JButton[][] buttons;
+    private OurButtons[][] buttons;
 
     private JFrame frame;
     private JPanel panel;
@@ -58,7 +58,7 @@ public class Grid {
 
     void initializeGrid() {
         locations = new Location[sizeX][sizeY];
-        buttons = new JButton[sizeX][sizeY];
+        buttons = new OurButtons[sizeX][sizeY];
 
         //some suspicious math to calculate grid size
         double offsetSize = 0.04;
@@ -80,7 +80,7 @@ public class Grid {
         for(int y = 0; y < sizeY; y++) {
             for(int x = 0; x < sizeX; x++) {
                 locations[x][y] = new Location();   //Create a new Location and Button object
-                buttons[x][y] = new JButton(woodsButtons);
+                buttons[x][y] = new OurButtons(x, y);
                 
                 buttons[x][y].setVisible(true);
                 buttons[x][y].setBounds((int)(offsetX + buttonSize * x), (int)(offsetY + buttonSize * y),
