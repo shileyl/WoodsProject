@@ -95,8 +95,8 @@ public class Player {
         //players will also try to stick together
         rand1 = rand2 = 0;
 
-        for(int i = 0; i < id; i++) {
-            Player p = players[i];
+        for(int i = 1; i < id; i++) {
+            Player p = players[i - 1];
             if(p.x - p.rand1 == x && p.y - p.rand2 == y) {
                 //if we are in this players last location, then move with them
                 rand1 = p.rand1;
@@ -104,10 +104,7 @@ public class Player {
                 return;
             }
         }
-
-        //set rand1 and rand2 to random ints that are -1, 0 or 1
-        rand1 = r.nextInt(3) - 1;
-        rand2 = r.nextInt(3) - 1;
+        movementProcedure1(r);
     }
 
     void updateStats() {
