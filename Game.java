@@ -14,18 +14,29 @@ public class Game {
     protected int numPlayers;
     protected int numPlayersPlaced = 0;
     public boolean allPlayersPlaced = false;
+    protected int gameID;
+    protected String [] playerNames;
+    protected String windowName;
+    protected int boardSizeX;
+    protected int boardSizeY;
+
 
     public static Game instance;
 
     public Game(String[] playerNames, String windowName, int boardSizeX, int boardSizeY){
         rand = new Random();
         grid = new Grid(windowName, boardSizeX, boardSizeY);
+        this.playerNames = playerNames;
+        this.windowName = windowName;
+        this.boardSizeX = boardSizeX;
+        this.boardSizeY = boardSizeY;
 
         instance = this;
 
         //the amount of players
         numPlayers = playerNames.length;
         initializePlayers(playerNames);
+        gameID = 0;
     }
 
     protected void initializePlayers(String[] playerNames) {

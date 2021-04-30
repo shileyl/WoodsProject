@@ -11,12 +11,12 @@ public class GameOver {
     private ImageIcon image;
 
 //this is just for testing the class
-    public static void main(String[]args){
-        new GameOver();
-    }
+   // public static void main(String[]args){
+    //    new GameOver();
+    //}
 
 
-    public GameOver() {
+    public GameOver(Game instance) {
         frame = new JFrame();
         frame.setTitle("GameOver");
         panel = new JPanel();
@@ -36,6 +36,7 @@ public class GameOver {
                 System.out.println("The button has been clicked");
                 WoodsSimulationMenu.main(null);
                 frame.dispose();
+                createNewGame(instance);
             }
         });
 
@@ -45,6 +46,15 @@ public class GameOver {
     void createIcon(){
         image = Util.createImageIcon(this, "Assets/GameOver1.png","End Game button");
         image = Util.scaleImageIcon(image, 300);
+    }
+
+    void createNewGame(Game instance){
+        if(instance.gameID ==1)
+            new GameK2(instance.playerNames, instance.windowName, instance.boardSizeX, instance.boardSizeY);
+        else if(instance.gameID ==2)
+            new Game35(instance.playerNames, instance.windowName, instance.boardSizeX, instance.boardSizeY);
+        else if (instance.gameID ==3)
+            new Game68(instance.playerNames, instance.windowName, instance.boardSizeX, instance.boardSizeY);
     }
     
 }
