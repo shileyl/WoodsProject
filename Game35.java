@@ -24,6 +24,7 @@ public class Game35 extends Game {
                 return false;
             }
         }
+        new GameOver();
         return true;
 
     }
