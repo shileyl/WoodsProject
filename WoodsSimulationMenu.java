@@ -141,8 +141,25 @@ public class WoodsSimulationMenu implements ActionListener{
 
 
     private void Game3() {
-        
+        NPromps.setBounds(100,150,700,200);
+        NPromps.setText("Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and \n pick the starting positions in the next window");
+        NPromps2.setText("Enter the size of the forest. 2 Numbers, X and Y in that order.");
+        userInput2.setVisible(true);
+        userInput3.setVisible(true);
+        cont.setVisible(true);
 
+        cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String s = userInput2.getText();
+                String[] names = s.split(" ");
+                //String snum = userInput3.getText(); 
+                String[] snums = userInput3.getText().split(" ");//convert this to an int this is gona be 2 ints
+                int x = Integer.parseInt(snums[0]);
+                int y = Integer.parseInt(snums[1]);
+                game = new Game68(names, "6-8 Game", x, y);
+            }
+        });
         //if(s==null||snum==null){ System.out.println("USER ERROR 0002");}
     }
 
