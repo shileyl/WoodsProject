@@ -1,7 +1,14 @@
-import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.event.MouseInputAdapter;
-import java.awt.*;
-import java.awt.event.*;
 
 public class WoodsSimulationMenu implements ActionListener{
 
@@ -22,8 +29,8 @@ public class WoodsSimulationMenu implements ActionListener{
     public static int x, y;
 
     public static void main(String[] args){
-        sizeX = 700;
-        sizeY = 700;
+        sizeX = 1920;
+        sizeY = 1080;
 
         frame = new JFrame();//the window
         frame.setTitle("Woods Simulation");
