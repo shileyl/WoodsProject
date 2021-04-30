@@ -62,7 +62,7 @@ public class Game {
         }
         //move players randomly
         for(int i = 0; i < players.length; i++) {
-            players[i].move(rand, grid);
+            players[i].move(rand, grid, players);
         }
 
         //tell the grid to update

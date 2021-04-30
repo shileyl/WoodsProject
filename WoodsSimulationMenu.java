@@ -239,11 +239,11 @@ public class WoodsSimulationMenu implements ActionListener{
         randomMP.setBounds(200,500,100,30);
         randomMP.setSelected(true);
 
-        otherMP = new JRadioButton("Other");
+        otherMP = new JRadioButton("RandomSometimes");
         otherMP.setActionCommand("1");
         otherMP.setBounds(200,530,100,30);
         
-        anotherMP = new JRadioButton("Another");
+        anotherMP = new JRadioButton("StickTogether");
         anotherMP.setActionCommand("2");
         anotherMP.setBounds(200,560,100,30);
 
