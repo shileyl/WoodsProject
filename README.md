@@ -9,8 +9,17 @@ Grades 3-5: students can set up the size of a grid, which can be rectangular (in
 Grades 6-8: students have all the control of the 3-5 game, but 6-8 students will be challenged to run experiments to determine how the average run varies with the size and shape of the grids. They will also be able to explore different protocols for wandering, and to decide which is the best way to wander if you want to shorten the time it takes to meet up. 
 
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Instructions for the JAR file:
 
+To run the main.jar file you will need to open up the terminal. Once the terminal is opened up then you will need to go to the directory the main.jar file is saved in.
 
+For example if you save the main.jar file to the desktop you will type in the terminal:
+
+                      cd desktop (hit enter)
+To run the main.jar file you will then type in the terminal:
+
+                      java -jar main.jar (hit enter)
 
 
 
