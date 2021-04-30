@@ -181,9 +181,10 @@ public class WoodsSimulationMenu implements ActionListener{
                 String[] names = s.split(" ");
                 //String snum = userInput3.getText(); 
                 String[] snums = userInput3.getText().split(" ");//convert this to an int this is gona be 2 ints
+                System.out.println(userInput3.getText());
                 int x = Integer.parseInt(snums[0]);
                 int y = Integer.parseInt(snums[1]);
-                game = new Game25(names, "K-2 Game", x, y);
+                game = new Game35(names, "3-5 Game", x, y);
             }
         });
         //if(s==null||snum==null){ System.out.println("USER ERROR 0002");}

@@ -1,4 +1,6 @@
 import java.awt.Font;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -47,7 +49,14 @@ public class Grid {
         frame.setVisible(true);  //Make it visable
         frame.add(panel);  //Link the 2
         panel.setLayout(null);
-        frame.setResizable(false);
+        frame.setResizable(true);
+
+        frame.addWindowStateListener(new WindowStateListener(){
+            public void windowStateChanged(WindowEvent e) {
+                System.out.println(frame.getSize().width + " " + frame.getSize().width);
+            }
+            
+        });
         
         frame.setSize(WoodsSimulationMenu.sizeX, WoodsSimulationMenu.sizeY);//this needs to be at the end 
     }
