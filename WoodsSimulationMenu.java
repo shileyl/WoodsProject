@@ -30,6 +30,11 @@ public class WoodsSimulationMenu implements ActionListener{
     private static Game game;
     public static int sizeX, sizeY;
     public static int x, y;
+    public static int movementProcedure = 0;
+
+    private static JLabel radioButtonsText;
+    private static JRadioButton randomMP, otherMP, anotherMP;
+    private static ButtonGroup radioButtonGroup;
 
 
     public static void main(String[] args){
@@ -109,7 +114,6 @@ public class WoodsSimulationMenu implements ActionListener{
         panel.add(cont);
 
         createMovementDropDown();
-
         frame.setSize(sizeX,sizeY);
     }
 
@@ -118,7 +122,7 @@ public class WoodsSimulationMenu implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String grade = userInput.getText();
         System.out.println(grade.toUpperCase());
-
+        
         switch(grade.toUpperCase()){
             case "K": StartK2Game();userInput.setText("");
                 break;
@@ -145,11 +149,13 @@ public class WoodsSimulationMenu implements ActionListener{
 
     private void Game3() {
         NPromps.setBounds(100,130,700,200);
-        NPromps.setText("<html>Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and<br/>pick the starting positions in the next window</html>");
+        NPromps.setText("<html>Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and<br/>pick the starting positions in the next window.</html>");
         NPromps2.setText("Enter the size of the forest. 2 Numbers, X and Y in that order.");
         userInput2.setVisible(true);
         userInput3.setVisible(true);
         cont.setVisible(true);
+        displayRadioButtons();
+
 
         cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
             @Override
@@ -171,12 +177,13 @@ public class WoodsSimulationMenu implements ActionListener{
     private void Game2() {
         //create new lables asking for the names of the players and the rules of the game
         //ask how many player there will be
-        NPromps.setBounds(100,150,700,200);
-        NPromps.setText("Enter the Names of the Players Seperated by a Space. You can add up to 4 Players");
+        NPromps.setBounds(100,130,700,200);
+        NPromps.setText("<html>Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and<br/>pick the starting positions in the next window.</html>");
         NPromps2.setText("Enter the size of the forest. 2 Numbers, X and Y in that order.");
         userInput2.setVisible(true);
         userInput3.setVisible(true);
         cont.setVisible(true);
+
 
         cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
             @Override
@@ -221,25 +228,73 @@ public class WoodsSimulationMenu implements ActionListener{
     }
 
     private static void createMovementDropDown() {
+        //display text
+        radioButtonsText = new JLabel("Select the movement procedure.");
+        radioButtonsText.setBounds(110, 460, 260, 40);
+        radioButtonsText.setHorizontalAlignment(0); //center text
+
         //Create a button for each movement procedure
-        JRadioButton randomMP = new JRadioButton("Random");
-        randomMP.setMnemonic(KeyEvent.VK_R);
-        randomMP.setActionCommand("Random");  //to be honest i dont know what this does
+        randomMP = new JRadioButton("Random");
+        randomMP.setActionCommand("0");
+        randomMP.setBounds(200,500,100,30);
         randomMP.setSelected(true);
 
-        JRadioButton otherMP = new JRadioButton("Other");
-        otherMP.setMnemonic(KeyEvent.VK_O);
-        otherMP.setActionCommand("other");
+        otherMP = new JRadioButton("Other");
+        otherMP.setActionCommand("1");
+        otherMP.setBounds(200,530,100,30);
+        
+        anotherMP = new JRadioButton("Another");
+        anotherMP.setActionCommand("2");
+        anotherMP.setBounds(200,560,100,30);
 
         //group the radio buttons
-        ButtonGroup group = new ButtonGroup();
-        group.add(randomMP);
-        group.add(otherMP);
+        radioButtonGroup = new ButtonGroup();
+        radioButtonGroup.add(randomMP);
+        radioButtonGroup.add(otherMP);
+        radioButtonGroup.add(anotherMP);
+        
+        //add the buttons to the panel
+        panel.add(randomMP);
+        panel.add(otherMP);
+        panel.add(anotherMP);
+        panel.add(radioButtonsText);
+        
+        //make everything invisible for now
+        randomMP.setVisible(false);
+        otherMP.setVisible(false);
+        anotherMP.setVisible(false);
+        radioButtonsText.setVisible(false);
 
-        //JPanel radioPanel = new JPanel(new GridLayout(0, 1));
-        //radioPanel.add(randomMP);
-        //radioPanel.add(otherMP);
+        //create an action listener for each button
+        randomMP.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                radioButtonPressed(e.getActionCommand());
+            }
+        });
+        otherMP.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                radioButtonPressed(e.getActionCommand());
+            }
+        });
+        anotherMP.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                radioButtonPressed(e.getActionCommand());
+            }
+        });
+    }
 
-        //panel.add(group);
+    private static void displayRadioButtons() {
+        //set everything visible
+        randomMP.setVisible(true);
+        otherMP.setVisible(true);
+        anotherMP.setVisible(true);
+        radioButtonsText.setVisible(true);
+    }
+
+    private static void radioButtonPressed(String movementProcedureID) {
+        int id = Integer.parseInt(movementProcedureID);
+        movementProcedure = id;
+
+        System.out.println("Picked movement procedure " + movementProcedure);
     }
 }
