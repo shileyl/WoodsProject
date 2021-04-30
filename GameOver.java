@@ -26,15 +26,15 @@ public class GameOver {
         //adding the button to the frame
         createIcon();
         Imagebutton = new JButton(image); 
-        Imagebutton.setBounds(100,100,100,100);
+        Imagebutton.setBounds(0,0,300,300);
         panel.add(Imagebutton);
 
         frame.setSize(300, 300);
     }
 
     void createIcon(){
-        image = Util.createImageIcon(this, "Assets/2boys.png","this is a 2 boys");
-        image = Util.scaleImageIcon(image, 20);
+        image = Util.createImageIcon(this, "Assets/GameOver1.png","End Game button");
+        image = Util.scaleImageIcon(image, 300);
     }
     
 }
