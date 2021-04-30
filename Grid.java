@@ -3,6 +3,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ public class Grid {
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
     private ImageIcon woodsButtons; 
+    private JButton restart;
 
     int sizeX, sizeY;
     int mouseX, mouseY;
@@ -131,6 +133,7 @@ public class Grid {
                 y += height;
             }
         }
+        
     }
 
     void createNewTextLabel(int index, Font f, int x, int y, int w, int h, String text) {

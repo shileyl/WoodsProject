@@ -6,24 +6,12 @@ public class Game35 extends Game {
     //Game class for grades 2 through 5
     public Game35(String[] playerNames, String windowName, int boardSizeX, int boardSizeY){
         super(playerNames, windowName, boardSizeX, boardSizeY);
-    }
-
-    //called when a player was placed on the grid
-    protected void playerPlaced(int x, int y) {
-        if(allPlayersPlaced)
-            return;
+        for(int i = 0; i < players.length; i++)
+            players[i].setLocation((boardSizeX - 1) * (i % 2), (boardSizeY - 1) * (i == 1 || i == 2 ? 1 : 0));
+            
+        updateGrid();
         
-        updateGrid(x, y, players[numPlayersPlaced]);
-        players[numPlayersPlaced].x = x;
-        players[numPlayersPlaced].y = y;
-        numPlayersPlaced++;
-
-        //start the game when all the players are placed
-        allPlayersPlaced = numPlayersPlaced == numPlayers;
-        if(allPlayersPlaced) {
-            updateGrid();
-            startGame();
-        }
+        startGame();
     }
 
     protected void gameUpdate() {
@@ -37,5 +25,7 @@ public class Game35 extends Game {
             }
         }
         return true;
+
     }
+
 }
