@@ -30,7 +30,7 @@ public class WoodsSimulationMenu implements ActionListener{
     private static Game game;
     public static int sizeX, sizeY;
     public static int x, y;
-    public static int movementProcedure;
+    public static int movementProcedure = 0;
 
     private static JLabel radioButtonsText;
     private static JRadioButton randomMP, otherMP, anotherMP;
@@ -230,20 +230,21 @@ public class WoodsSimulationMenu implements ActionListener{
     private static void createMovementDropDown() {
         //display text
         radioButtonsText = new JLabel("Select the movement procedure.");
-        radioButtonsText.setBounds(150, 460, 200, 40);
+        radioButtonsText.setBounds(110, 460, 260, 40);
+        radioButtonsText.setHorizontalAlignment(0); //center text
 
         //Create a button for each movement procedure
         randomMP = new JRadioButton("Random");
-        randomMP.setActionCommand("Random");
+        randomMP.setActionCommand("0");
         randomMP.setBounds(200,500,100,30);
         randomMP.setSelected(true);
 
         otherMP = new JRadioButton("Other");
-        otherMP.setActionCommand("other");
+        otherMP.setActionCommand("1");
         otherMP.setBounds(200,530,100,30);
         
         anotherMP = new JRadioButton("Another");
-        anotherMP.setActionCommand("another");
+        anotherMP.setActionCommand("2");
         anotherMP.setBounds(200,560,100,30);
 
         //group the radio buttons
