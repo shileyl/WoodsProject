@@ -8,6 +8,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -40,7 +41,6 @@ public class WoodsSimulationMenu implements ActionListener{
     public static void main(String[] args){
         sizeX = 700;
         sizeY = 700;
-
         frame = new JFrame();//the window
         frame.setTitle("Woods Simulation");
         panel = new JPanel();//the form
@@ -166,6 +166,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 String[] snums = userInput3.getText().split(" ");//convert this to an int this is gona be 2 ints
                 int x = Integer.parseInt(snums[0]);
                 int y = Integer.parseInt(snums[1]);
+                if(x>50 ||y>50 ){printAlert();}
                 game = new Game68(names, "6-8 Game", x, y);
                 frame.dispose();//closes window after new one opens
             }
@@ -195,6 +196,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 System.out.println(userInput3.getText());
                 int x = Integer.parseInt(snums[0]);
                 int y = Integer.parseInt(snums[1]);
+                if(x>50 ||y>50 ){printAlert();}
                 game = new Game35(names, "3-5 Game", x, y);
                 frame.dispose();//closes window after new one opens
             }
@@ -218,6 +220,7 @@ public class WoodsSimulationMenu implements ActionListener{
                 String s = userInput2.getText();
                 String[] names = s.split(" ");
                 String snum = userInput3.getText();//convert this to an int 
+                if(Integer.parseInt(snum)>50){printAlert();}
                 game = new GameK2(names, "K-2 Game", Integer.parseInt(snum), Integer.parseInt(snum));
                 frame.dispose();//closes window after new one opens
                 //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
@@ -296,5 +299,9 @@ public class WoodsSimulationMenu implements ActionListener{
         movementProcedure = id;
 
         System.out.println("Picked movement procedure " + movementProcedure);
+    }
+
+    private static void printAlert(){
+        JOptionPane.showMessageDialog(null, "Making any part of the Grid bigger than 50 is not recommended!!");
     }
 }
