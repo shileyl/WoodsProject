@@ -6,6 +6,7 @@ public class Game35 extends Game {
     //Game class for grades 2 through 5
     public Game35(String[] playerNames, String windowName, int boardSizeX, int boardSizeY){
         super(playerNames, windowName, boardSizeX, boardSizeY);
+        gameID = 2;
     }
 
     //called when a player was placed on the grid
@@ -33,7 +34,7 @@ public class Game35 extends Game {
             }
         }
         grid.terminateFrame();
-        new GameOver();
+        new GameOver(instance);
         return true;
 
     }

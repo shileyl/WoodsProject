@@ -5,7 +5,7 @@ public class GameK2 extends Game {
         super(playerNames, windowName, boardSizeX, boardSizeY);
         players[0].setLocation(0, 0);
         players[1].setLocation(boardSizeX - 1, boardSizeY - 1);
-
+        gameID = 1;
         updateGrid();
         startGame();
     }
@@ -17,7 +17,7 @@ public class GameK2 extends Game {
     protected boolean checkForWin() {
         if(players[0].x == players[1].x)
             if(players[0].y == players[1].y){
-                new GameOver();
+                new GameOver(instance);
                 grid.terminateFrame();
                 return true;
             }
