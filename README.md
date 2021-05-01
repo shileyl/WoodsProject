@@ -10,17 +10,11 @@ Grades 6-8: students have all the control of the 3-5 game, but 6-8 students will
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Instructions for the JAR file:
+Instructions for the executable JAR file:
 
-To run the main.jar file you will need to open up the terminal. Once the terminal is opened up then you will need to go to the directory the main.jar file is saved in.
+Download the WoodsProject.jar file and place it in any directory of your choosing. 
 
-For example if you save the main.jar file to the desktop you will type in the terminal:
-
-                      cd desktop (hit enter)
-To run the main.jar file you will then type in the terminal:
-
-                      java -jar main.jar (hit enter)
-
+To Run the Jar File simply double click on it and the simulation will begin.
 
 
 
