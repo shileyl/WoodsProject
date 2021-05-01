@@ -171,15 +171,9 @@ public class WoodsSimulationMenu implements ActionListener{
         cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
             @Override
             public void actionPerformed(ActionEvent e) {
-                String s = userInput2.getText();
-                String[] names = s.split(" ");
-                //String snum = userInput3.getText(); 
-                String[] snums = userInput3.getText().split(" ");//convert this to an int this is gona be 2 ints
-                int x = Integer.parseInt(snums[0]);
-                int y = Integer.parseInt(snums[1]);
-                if(x>50 ||y>50 ){printAlert();}
-                game = new Game68(names, "6-8 Game", x, y);
-                frame.dispose();//closes window after new one opens
+                String s = userInput2.getText();     //names
+                String snum = userInput3.getText();  //grid size text
+                continuePressed(2, s, snum);
             }
         });
         //if(s==null||snum==null){ System.out.println("USER ERROR 0002");}
@@ -200,16 +194,9 @@ public class WoodsSimulationMenu implements ActionListener{
         cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
             @Override
             public void actionPerformed(ActionEvent e) {
-                String s = userInput2.getText();
-                String[] names = s.split(" ");
-                //String snum = userInput3.getText(); 
-                String[] snums = userInput3.getText().split(" ");//convert this to an int this is gona be 2 ints
-                System.out.println(userInput3.getText());
-                int x = Integer.parseInt(snums[0]);
-                int y = Integer.parseInt(snums[1]);
-                if(x>50 ||y>50 ){printAlert();}
-                game = new Game35(names, "3-5 Game", x, y);
-                frame.dispose();//closes window after new one opens
+                String s = userInput2.getText();     //names
+                String snum = userInput3.getText();  //grid size text
+                continuePressed(1, s, snum);
             }
         });
         //if(s==null||snum==null){ System.out.println("USER ERROR 0002");}
@@ -228,13 +215,9 @@ public class WoodsSimulationMenu implements ActionListener{
         cont.addActionListener(new ActionListener(){//when the button is preseed it will execute game1.java
             @Override
             public void actionPerformed(ActionEvent e) {
-                String s = userInput2.getText();
-                String[] names = s.split(" ");
-                String snum = userInput3.getText();//convert this to an int 
-                if(Integer.parseInt(snum)>50){printAlert();}
-                game = new GameK2(names, "K-2 Game", Integer.parseInt(snum), Integer.parseInt(snum));
-                frame.dispose();//closes window after new one opens
-                //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                String s = userInput2.getText();     //names
+                String snum = userInput3.getText();  //grid size text
+                continuePressed(0, s, snum);
             }
         });
 
@@ -315,7 +298,89 @@ public class WoodsSimulationMenu implements ActionListener{
         System.out.println("Picked movement procedure " + movementProcedure);
     }
 
-    private static void printAlert(){
-        JOptionPane.showMessageDialog(null, "Making any part of the Grid bigger than 50 is not recommended!!");
+    private static void printAlert(int id){
+        String s = "Error!";
+        switch(id) {
+            case 0:
+                s = "Making any part of the Grid bigger than 50 is not recommended!!";
+                break;
+            case 1:
+                s = "Enter at least 2 names.";
+                break;
+            case 2:
+                s = "Enter only 2 names.";
+                break;
+            case 3:
+                s = "Enter less than 4 names.";
+                break;
+            case 4:
+                s = "Only enter 1 number for the size.";
+                break;
+            case 5:
+                s = "Enter 2 numbers X and Y for the grid size.";
+                break;
+            case 6:
+                s = "Enter integer numbers for the grid size.";
+                break;
+            case 7:
+                s = "Grid size must be greater than 1 on x and y axis.";
+                break;
+        }
+        JOptionPane.showMessageDialog(null, s);
+    }
+
+    private static void continuePressed(int grade, String namesString, String sizeString) {
+        String[] names = namesString.split(" ");
+        String[] size = sizeString.split(" ");
+        int[] sizeInt = new int[size.length];
+
+        if(names.length < 2) {
+            printAlert(1);
+            return;
+        }
+
+        if(grade == 0) {
+            if(names.length > 2) {
+                printAlert(2);
+                return;
+            }
+
+            if(size.length != 1) {
+                printAlert(4);
+                return;
+            }
+        }
+        if(grade == 1 || grade == 2) {
+            if(names.length > 4) {
+                printAlert(3);
+                return;
+            }
+            if(size.length != 2) {
+                printAlert(5);
+                return;
+            }
+        }
+
+        for(int i = 0; i < size.length; i++) {
+            try{
+                sizeInt[i] = Integer.parseInt(size[i]);
+            } catch(Exception e) {
+                printAlert(6);
+                return;
+            }
+            if(sizeInt[i] < 2) {
+                printAlert(7);
+                return;
+            }
+            if(sizeInt[i] > 50)
+                printAlert(0);
+        }
+
+        if(grade == 0)
+            game = new GameK2(names, "K-2 Game", sizeInt[0], sizeInt[0]);
+        if(grade == 1)
+            game = new Game35(names, "3-5 Game", sizeInt[0], sizeInt[1]);
+        if(grade == 2)
+            game = new Game68(names, "6-8 Game", sizeInt[0], sizeInt[1]);
     }
 }
