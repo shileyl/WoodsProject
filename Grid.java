@@ -163,7 +163,7 @@ public class Grid {
         speedSliderLabel = new JLabel("Game Speed");
         speedSliderLabel.setBounds(xPos + 5, yPos - 20, width - 5, 20);
 
-        speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 2);
+        speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 3);
         speedSlider.setBounds(xPos, yPos, width, height);
 
         speedSlider.setMinorTickSpacing(1);  //add little ticks on slider
@@ -172,7 +172,7 @@ public class Grid {
 
         Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
         labelTable.put( 0, new JLabel("0") );    //add labels at different locations on the slider
-        labelTable.put( 2, new JLabel("1x") );
+        labelTable.put( 3, new JLabel("1x") );
         labelTable.put( 10, new JLabel("2x") );
         labelTable.put( 20, new JLabel("3x") );
         speedSlider.setLabelTable( labelTable );
