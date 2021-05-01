@@ -2,7 +2,6 @@ import java.awt.Font;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 import java.util.Hashtable;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

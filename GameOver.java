@@ -16,7 +16,7 @@ public class GameOver {
     //}
 
 
-    public GameOver(Game instance) {
+    public GameOver(Game instance) {//creating the ending window and adding loop to the game again?
         frame = new JFrame();
         frame.setTitle("GameOver");
         panel = new JPanel();
@@ -46,12 +46,12 @@ public class GameOver {
         frame.setSize(sizeX, sizeY);
     }
 
-    void createIcon(){
+    void createIcon(){//creating the icon for the button
         image = Util.createImageIcon(this, "Assets/GameOver3.png","End Game button");
         image = Util.scaleImageIcon(image, sizeX);
     }
 
-    void createNewGame(Game instance){
+    void createNewGame(Game instance){//loops back to the begining of the simulation 
         if(instance.gameID ==1)
             new GameK2(instance.playerNames, instance.windowName, instance.boardSizeX, instance.boardSizeY);
         else if(instance.gameID ==2)

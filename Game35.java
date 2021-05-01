@@ -27,14 +27,14 @@ public class Game35 extends Game {
         }
     }
 
-    protected boolean checkForWin() {
+    protected boolean checkForWin() {//chicking of the players have all found each other
         for(int i =0;i<players.length;i++){
             if((players[0].x != players[i].x) || (players[0].y != players[i].y)){
                 return false;
             }
         }
-        grid.terminateFrame();
-        new GameOver(instance);
+        grid.terminateFrame();//closes the frame
+        new GameOver(instance);//ending screed
         return true;
 
     }

@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Game {
-
+    //field
     protected Player[] players;
     protected Grid grid;
     protected boolean gameOver = false;
@@ -41,7 +41,7 @@ public class Game {
         gameID = 0;
     }
 
-    protected void initializePlayers(String[] playerNames) {
+    protected void initializePlayers(String[] playerNames) {//preping the data
         players = new Player[playerNames.length];
 
         for(int i = 0; i < players.length; i++) {
@@ -67,7 +67,7 @@ public class Game {
         //play music
     }
 
-    protected void gameUpdate() {
+    protected void gameUpdate() {// keeps the game up to date called every frame
         if(checkForWin()) {
             //cancel game loop and return
             timer.stop();
@@ -84,7 +84,7 @@ public class Game {
         updateGrid();
     }
 
-    public void setGameSpeed(float newSpeed) {
+    public void setGameSpeed(float newSpeed) {//for the slider changeing the speed of the simulation
         if(newSpeed < 0.1) {
             timerMilliDelay = Integer.MAX_VALUE;
             return;
@@ -93,7 +93,7 @@ public class Game {
         timerMilliDelay = (int) (timerMilliDefault / newSpeed);
     }
     
-    protected void updateGrid() {
+    protected void updateGrid() {//updates the grid every frame
         //execute functions on grid class to update display
         grid.clear();
         grid.addPlayers(players);

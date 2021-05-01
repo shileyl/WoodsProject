@@ -6,7 +6,7 @@ public class Game68 extends Game {
     //Game class for grades 6 through 8
     public Game68(String[] playerNames, String windowName, int boardSizeX, int boardSizeY){
         super(playerNames, windowName, boardSizeX, boardSizeY);
-        gameID = 3;
+        gameID = 3;//track the game version in the GameOver class
     }
 
     //called when a player was placed on the grid
@@ -27,7 +27,7 @@ public class Game68 extends Game {
         }
     }
 
-    protected void gameUpdate() {
+    protected void gameUpdate() {//you know what it do
         super.gameUpdate();
     }
 
@@ -37,7 +37,7 @@ public class Game68 extends Game {
                 return false;
             }
         }
-        grid.terminateFrame();
+        grid.terminateFrame();//closees the window
         new GameOver(instance);
         return true;
 
