@@ -134,12 +134,13 @@ public class WoodsSimulationMenu implements ActionListener{
         String grade = userInput.getText();
         System.out.println(grade.toUpperCase());
         
+        //switch statement for the string entered as the grade level
         switch(grade.toUpperCase()){
-            case "K": StartK2Game();userInput.setText("");
+            case "K": Game1();userInput.setText("");
                 break;
-            case "1": StartK2Game();userInput.setText("");
+            case "1": Game1();userInput.setText("");
                 break;
-            case "2": StartK2Game();userInput.setText("");
+            case "2": Game1();userInput.setText("");
                 break;
             case "3": Game2();userInput.setText("");
                 break;
@@ -205,7 +206,7 @@ public class WoodsSimulationMenu implements ActionListener{
 
 
     //called when user enters K, 1, or 2 as grade level
-    private void StartK2Game() {
+    private void Game1() {
         //create new lables asking for the names of the players and the rules of the game
         NPromps.setText("Enter the Names of 2 Players Seperated by a Space.");
         NPromps2.setText("Enter the size of the Forest. Only one Number. It can only be a square");
@@ -292,8 +293,9 @@ public class WoodsSimulationMenu implements ActionListener{
         radioButtonsText.setVisible(true);
     }
 
+    //callback for when a radio button was pressed
     private static void radioButtonPressed(String movementProcedureID) {
-        int id = Integer.parseInt(movementProcedureID);
+        int id = Integer.parseInt(movementProcedureID);  //parse the integer id and set it as the movement procedure
         movementProcedure = id;
 
         System.out.println("Picked movement procedure " + movementProcedure);
@@ -301,6 +303,8 @@ public class WoodsSimulationMenu implements ActionListener{
 
     private static void printAlert(int id){
         String s = "Error!";
+
+        //switch statement to print the correct error message based off the error id
         switch(id) {
             case 0:
                 s = "Making any part of the Grid bigger than 50 is not recommended!!";
@@ -338,40 +342,48 @@ public class WoodsSimulationMenu implements ActionListener{
         String[] size = sizeString.split(" ");
         int[] sizeInt = new int[size.length];
 
+        //if there are less than 2 names print an error
         if(names.length < 2) {
             printAlert(1);
             return;
         }
 
         if(grade == 0) {
+            //if the amount of names entered was greater than 2, print an error
             if(names.length > 2) {
                 printAlert(2);
                 return;
             }
 
+            //make sure only one number was entered for the grid size
             if(size.length != 1) {
                 printAlert(4);
                 return;
             }
         }
         if(grade == 1 || grade == 2) {
+            //print alerts if the amount of names entered was too many
             if(names.length > 4) {
                 printAlert(3);
                 return;
             }
+            //print alert if the amount of numbers entered for the grid size is not 2
             if(size.length != 2) {
                 printAlert(5);
                 return;
             }
         }
 
-        for(int i = 0; i < size.length; i++) {
+        for(int i = 0; i < size.length; i++) {   //loop through the string array of grid sizes entered
+            //check for integer parsing errors
             try{
                 sizeInt[i] = Integer.parseInt(size[i]);
             } catch(Exception e) {
                 printAlert(6);
                 return;
             }
+
+            //make sure the size is within 2-50, allow size over 50 but give a warning
             if(sizeInt[i] < 2) {
                 printAlert(7);
                 return;

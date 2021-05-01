@@ -145,9 +145,12 @@ public class Grid {
     void createSpeedSlider() {
         int width = (int)(WoodsSimulationMenu.sizeX * 0.2 * 0.75);
         int height = 50;
+
+        //calculate the x and y position based off window size
         int xPos = (int)(WoodsSimulationMenu.sizeX * 0.8 + ((WoodsSimulationMenu.sizeX * 0.2) - width)/2.0);
         int yPos = WoodsSimulationMenu.sizeY - (int)(WoodsSimulationMenu.sizeY * 0.2);
         
+        //create sliders and text labels
         speedSliderLabel = new JLabel("Game Speed");
         speedSliderLabel.setBounds(xPos + 5, yPos - 20, width - 5, 20);
         speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 3);
@@ -161,14 +164,14 @@ public class Grid {
         labelTable.put( 10, new JLabel("2x") );
         labelTable.put( 20, new JLabel("3x") );
         speedSlider.setLabelTable( labelTable );
-        speedSlider.addChangeListener(new ChangeListener(){
+        speedSlider.addChangeListener(new ChangeListener(){  //create a callback for the slider when its value is changed
             public void stateChanged(ChangeEvent e) {
                 sliderValueChanged();
             }
         });
-        speedSlider.setVisible(true);
+        speedSlider.setVisible(true);  //set everything visible
         speedSliderLabel.setVisible(true);
-        panel.add(speedSlider);
+        panel.add(speedSlider);   //add everything to the panel
         panel.add(speedSliderLabel);
     }
 

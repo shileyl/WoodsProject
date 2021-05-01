@@ -97,6 +97,7 @@ public class Player {
         movementProcedure1(r);
     }
 
+    //change the player stats strings
     void updateStats() {
         statValues[0] = "" + moves;
     }
