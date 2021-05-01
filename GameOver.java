@@ -47,7 +47,7 @@ public class GameOver {
     }
 
     void createIcon(){
-        image = Util.createImageIcon(this, "Assets/GameOver1.png","End Game button");
+        image = Util.createImageIcon(this, "Assets/GameOver3.png","End Game button");
         image = Util.scaleImageIcon(image, sizeX);
     }
 
