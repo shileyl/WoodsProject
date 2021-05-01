@@ -2,8 +2,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.KeyEvent;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,12 +25,10 @@ public class WoodsSimulationMenu implements ActionListener{
     private static JLabel coords;
     private static JTextField userInput2;
     private static JTextField userInput3;
-
     private static Game game;
     public static int sizeX, sizeY;
     public static int x, y;
     public static int movementProcedure = 0;
-
     private static JLabel radioButtonsText;
     private static JRadioButton randomMP, otherMP, anotherMP;
     private static ButtonGroup radioButtonGroup;
@@ -96,7 +92,7 @@ public class WoodsSimulationMenu implements ActionListener{
         //for the interactions
         NPromps = new JLabel();//for game one
         //NPromps.setBounds(200,150,700,200);
-        NPromps.setBounds(0,220,sizeX,25);
+        NPromps.setBounds(0,220,sizeX,34);
         NPromps.setHorizontalAlignment(0);
         panel.add(NPromps);
 

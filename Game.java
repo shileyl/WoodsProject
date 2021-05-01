@@ -6,11 +6,9 @@ public class Game {
 
     protected Player[] players;
     protected Grid grid;
-
     protected boolean gameOver = false;
     protected Random rand;
     protected Timer timer;
-
     protected int numPlayers;
     protected int numPlayersPlaced = 0;
     public boolean allPlayersPlaced = false;

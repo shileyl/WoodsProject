@@ -20,10 +20,8 @@ public class Grid {
     
     private Location[][] locations;
     private Button[][] buttons;
-
     private JFrame frame;
     private JPanel panel;
-    
     private ImageIcon twoPlayersIcon;
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
@@ -35,7 +33,6 @@ public class Grid {
     int sizeX, sizeY;
     int mouseX, mouseY;
     double buttonSize;
-
     private JLabel[] pStats;
 
     public Grid(String windowName, int sizeX, int sizeY) {  //Constructor for grid
