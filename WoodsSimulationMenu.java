@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.event.MouseInputAdapter;
 
 public class WoodsSimulationMenu implements ActionListener{
-
     private static JFrame frame;
     public static JPanel panel;
     private static JLabel prompt;

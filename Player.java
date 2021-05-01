@@ -1,14 +1,11 @@
 import java.util.Random;
 import javax.swing.ImageIcon;
-
 //Player class keeps track of position and stats for each player
-
 public class Player {
     public String name;
     public ImageIcon image;
     public int x, y;
     public int rand1, rand2;
-
     private int id = 0;
     private int moves = 0;
     private int movementProcedure = 0;
@@ -42,16 +39,13 @@ public class Player {
             pickDirectionToMove(r, players);
         } 
         while(!g.isValidPosition(x + rand1, y + rand2));   //check if those values result in valid grid coordinates
-
         //update the x and y coordinates along with the amount of moves
         x += rand1;
         y += rand2;
-
         if(rand1 == rand2 && rand1 == 0) {
             updateStats();
             return;
         }
-
         moves++;
         updateStats();
     }
@@ -74,7 +68,6 @@ public class Player {
         rand1 = rand2 = 0;
 
         while(rand1 == 0 && rand2 == 0) {  //keep randomizing until at least one of the ints is not zero
-
             //set rand1 and rand2 to random ints that are -1, 0 or 1
             rand1 = r.nextInt(3) - 1;
             rand2 = r.nextInt(3) - 1;
@@ -83,7 +76,6 @@ public class Player {
 
     void movementProcedure1(Random r) {  //generate a random x and y to move, players dont have to move each turn
         rand1 = rand2 = 0;
-
         //set rand1 and rand2 to random ints that are -1, 0 or 1
         rand1 = r.nextInt(3) - 1;
         rand2 = r.nextInt(3) - 1;
@@ -93,7 +85,6 @@ public class Player {
         //generate a random x and y to move, players dont have to move each turn, 
         //players will also try to stick together
         rand1 = rand2 = 0;
-
         for(int i = 1; i < id; i++) {
             Player p = players[i - 1];
             if(p.x - p.rand1 == x && p.y - p.rand2 == y) {

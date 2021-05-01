@@ -11,13 +11,9 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-
 //Grid class is responsible for managing the Java Swing variables and anything related to displaying the game information
 
-
 public class Grid {
-    
     private Location[][] locations;
     private Button[][] buttons;
     private JFrame frame;
@@ -26,10 +22,8 @@ public class Grid {
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
     private ImageIcon woodsButtons; 
-    
     private JLabel speedSliderLabel;
     private JSlider speedSlider;
-
     int sizeX, sizeY;
     int mouseX, mouseY;
     double buttonSize;
@@ -55,14 +49,12 @@ public class Grid {
         frame.add(panel);  //Link the 2
         panel.setLayout(null);
         frame.setResizable(true);
-
         frame.addWindowStateListener(new WindowStateListener(){
             public void windowStateChanged(WindowEvent e) {
                 System.out.println(frame.getSize().width + " " + frame.getSize().width);
             }
             
         });
-        
         frame.setSize(WoodsSimulationMenu.sizeX, WoodsSimulationMenu.sizeY);//this needs to be at the end 
     }
 
@@ -76,7 +68,6 @@ public class Grid {
         double boardSizeX = 0.8 * WoodsSimulationMenu.sizeX;
         double boardSizeY = WoodsSimulationMenu.sizeY;
         double ratio = (double) WoodsSimulationMenu.sizeY / WoodsSimulationMenu.sizeX;
-
         if((1.0/0.8 * ratio * sizeX) > sizeY) {
             offsetX = 2.0 * offsetSize * boardSizeX;
             buttonSize = (boardSizeX - offsetX) / sizeX;
@@ -86,13 +77,11 @@ public class Grid {
             buttonSize = (boardSizeY - (2.0 * offsetY)) / sizeY;
             offsetX = (boardSizeX - (buttonSize * sizeX)) / 2.0;
         }
-
         //Loop through x and y coordinates
         for(int y = 0; y < sizeY; y++) {
             for(int x = 0; x < sizeX; x++) {
                 locations[x][y] = new Location();   //Create a new Location and Button object
                 buttons[x][y] = new Button(x, y);
-                
                 buttons[x][y].setVisible(true);
                 buttons[x][y].setBounds((int)(offsetX + buttonSize * x), (int)(offsetY + buttonSize * y),
                  (int)buttonSize, (int)buttonSize);
@@ -156,33 +145,27 @@ public class Grid {
     void createSpeedSlider() {
         int width = (int)(WoodsSimulationMenu.sizeX * 0.2 * 0.75);
         int height = 50;
-        
         int xPos = (int)(WoodsSimulationMenu.sizeX * 0.8 + ((WoodsSimulationMenu.sizeX * 0.2) - width)/2.0);
         int yPos = WoodsSimulationMenu.sizeY - (int)(WoodsSimulationMenu.sizeY * 0.2);
         
         speedSliderLabel = new JLabel("Game Speed");
         speedSliderLabel.setBounds(xPos + 5, yPos - 20, width - 5, 20);
-
         speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 3);
         speedSlider.setBounds(xPos, yPos, width, height);
-
         speedSlider.setMinorTickSpacing(1);  //add little ticks on slider
         speedSlider.setPaintTicks(true);
         speedSlider.setPaintLabels(true);
-
         Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
         labelTable.put( 0, new JLabel("0") );    //add labels at different locations on the slider
         labelTable.put( 3, new JLabel("1x") );
         labelTable.put( 10, new JLabel("2x") );
         labelTable.put( 20, new JLabel("3x") );
         speedSlider.setLabelTable( labelTable );
-
         speedSlider.addChangeListener(new ChangeListener(){
             public void stateChanged(ChangeEvent e) {
                 sliderValueChanged();
             }
         });
-
         speedSlider.setVisible(true);
         speedSliderLabel.setVisible(true);
         panel.add(speedSlider);
