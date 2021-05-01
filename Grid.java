@@ -1,9 +1,7 @@
 import java.awt.Font;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
-
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,20 +15,15 @@ public class Grid {
     
     private Location[][] locations;
     private Button[][] buttons;
-
     private JFrame frame;
     private JPanel panel;
-    
     private ImageIcon twoPlayersIcon;
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
     private ImageIcon woodsButtons; 
-    private JButton restart;
-
     int sizeX, sizeY;
     int mouseX, mouseY;
     double buttonSize;
-
     private JLabel[] pStats;
 
     public Grid(String windowName, int sizeX, int sizeY) {  //Constructor for grid

@@ -1,5 +1,4 @@
 import java.util.Random;
-
 import javax.swing.ImageIcon;
 
 //Player class keeps track of position and stats for each player
