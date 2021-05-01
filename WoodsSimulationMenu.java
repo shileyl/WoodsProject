@@ -73,44 +73,60 @@ public class WoodsSimulationMenu implements ActionListener{
         //Title of the Program
         prompt = new JLabel("Woods Simulation");
         prompt.setFont(new Font("Verdana", Font.PLAIN, 18));
-        prompt.setBounds(250,20,200,25);//x,y,width,height
+        //prompt.setBounds(250,20,200,25);//x,y,width,height
+        prompt.setBounds(0,20,sizeX,25);
+        prompt.setHorizontalAlignment(0);
         panel.add(prompt);
 
         //Message to the user
         prompt = new JLabel("Enter the Grade Level You Want To Play");
-        prompt.setBounds(200,50,400,25);//x,y,width,height
+        //prompt.setBounds(200,50,400,25);//x,y,width,height
+        prompt.setBounds(0,50,sizeX,25);
+        prompt.setHorizontalAlignment(0);
         panel.add(prompt);
 
         //user input
         userInput = new JTextField();
-        userInput.setBounds(275,90,100,25);
+        //userInput.setBounds(275,90,100,25);
+        userInput.setBounds(0,90,sizeX,25);
+        userInput.setHorizontalAlignment(0);
         userInput.addActionListener(new WoodsSimulationMenu());
         panel.add(userInput);
 
         //for the interactions
         NPromps = new JLabel();//for game one
-        NPromps.setBounds(200,150,700,200);
+        //NPromps.setBounds(200,150,700,200);
+        NPromps.setBounds(0,220,sizeX,25);
+        NPromps.setHorizontalAlignment(0);
         panel.add(NPromps);
 
         userInput2 = new JTextField();//multi putpose textfield
         userInput2.setVisible(false);
-        userInput2.setBounds(200,260,100,25);
+        //userInput2.setBounds(200,260,100,25);
+        userInput2.setBounds(0,260,sizeX,25);
+        userInput2.setHorizontalAlignment(0);
         panel.add(userInput2);
 
         //205,290
         NPromps2 = new JLabel();//for game one
-        NPromps2.setBounds(200,220,700,200);
+        //NPromps2.setBounds(200,220,700,200);
+        NPromps2.setBounds(0,300,sizeX,25);
+        NPromps2.setHorizontalAlignment(0);
         panel.add(NPromps2);
 
         userInput3 = new JTextField();//multi putpose textfield
         userInput3.setVisible(false);
-        userInput3.setBounds(200,330,100,25);
+        //userInput3.setBounds(200,330,100,25);
+        userInput3.setBounds(0,330,sizeX,25);
+        userInput3.setHorizontalAlignment(0);
         panel.add(userInput3);
 
         //continue button
         cont =  new JButton("Continue");
         cont.setVisible(false);
-        cont.setBounds(200,360,100,25);
+        //cont.setBounds(200,360,100,25);
+        cont.setBounds(0,360,sizeX,25);
+        cont.setHorizontalAlignment(0);
         panel.add(cont);
 
         createMovementDropDown();
@@ -148,7 +164,7 @@ public class WoodsSimulationMenu implements ActionListener{
 
 
     private void Game3() {
-        NPromps.setBounds(100,130,700,200);
+        //NPromps.setBounds(100,130,700,200);
         NPromps.setText("<html>Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and<br/>pick the starting positions in the next window.</html>");
         NPromps2.setText("Enter the size of the forest. 2 Numbers, X and Y in that order.");
         userInput2.setVisible(true);
@@ -178,7 +194,7 @@ public class WoodsSimulationMenu implements ActionListener{
     private void Game2() {
         //create new lables asking for the names of the players and the rules of the game
         //ask how many player there will be
-        NPromps.setBounds(100,130,700,200);
+        //NPromps.setBounds(100,130,700,200);
         NPromps.setText("<html>Enter the Names of the Players Seperated by a Space. You can add up to 4 Players and<br/>pick the starting positions in the next window.</html>");
         NPromps2.setText("Enter the size of the forest. 2 Numbers, X and Y in that order.");
         userInput2.setVisible(true);
