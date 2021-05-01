@@ -28,7 +28,7 @@ public class GameOver {
         //adding the button to the frame
         createIcon();
         Imagebutton = new JButton(image); 
-        Imagebutton.setBounds(0,0,300,300);
+        Imagebutton.setBounds(0,0,700,700);
         panel.add(Imagebutton);
         Imagebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -39,7 +39,7 @@ public class GameOver {
             }
         });
 
-        frame.setSize(300, 300);
+        frame.setSize(700, 700);
     }
 
     void createIcon(){
