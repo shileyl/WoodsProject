@@ -8,6 +8,7 @@ public class GameOver {
     private  JPanel panel;
     private  JButton Imagebutton;
     private ImageIcon image;
+    private int sizeX, sizeY;
 
 //this is just for testing the class
    // public static void main(String[]args){
@@ -25,10 +26,13 @@ public class GameOver {
         panel.setLayout(null);
         frame.setResizable(false);
 
+        sizeX = WoodsSimulationMenu.sizeX;
+        sizeY = WoodsSimulationMenu.sizeY;
+
         //adding the button to the frame
         createIcon();
         Imagebutton = new JButton(image); 
-        Imagebutton.setBounds(0,0,700,700);
+        Imagebutton.setBounds(0,0,sizeX,sizeY);
         panel.add(Imagebutton);
         Imagebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -39,12 +43,12 @@ public class GameOver {
             }
         });
 
-        frame.setSize(700, 700);
+        frame.setSize(sizeX, sizeY);
     }
 
     void createIcon(){
         image = Util.createImageIcon(this, "Assets/GameOver1.png","End Game button");
-        image = Util.scaleImageIcon(image, 300);
+        image = Util.scaleImageIcon(image, sizeX);
     }
 
     void createNewGame(Game instance){
