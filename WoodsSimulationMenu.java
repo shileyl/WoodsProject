@@ -92,7 +92,7 @@ public class WoodsSimulationMenu implements ActionListener{
         //for the interactions
         NPromps = new JLabel();//for game one
         //NPromps.setBounds(200,150,700,200);
-        NPromps.setBounds(0,220,sizeX,25);
+        NPromps.setBounds(0,220,sizeX,34);
         NPromps.setHorizontalAlignment(0);
         panel.add(NPromps);
 
