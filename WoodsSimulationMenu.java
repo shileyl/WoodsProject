@@ -153,7 +153,8 @@ public class WoodsSimulationMenu implements ActionListener{
                 break;
             case "8": Game3();userInput.setText("");
                 break;
-
+            default: printAlert(8);;
+                break;
         }  
     }
 
@@ -325,6 +326,9 @@ public class WoodsSimulationMenu implements ActionListener{
             case 7:
                 s = "Grid size must be greater than 1 on x and y axis.";
                 break;
+            case 8:
+                s = "Enter \"K\", or a number 1 through 8 for the grade level.";
+                break;
         }
         JOptionPane.showMessageDialog(null, s);
     }
@@ -376,11 +380,14 @@ public class WoodsSimulationMenu implements ActionListener{
                 printAlert(0);
         }
 
+        //create an instance of the game class based on the grade level
         if(grade == 0)
             game = new GameK2(names, "K-2 Game", sizeInt[0], sizeInt[0]);
         if(grade == 1)
             game = new Game35(names, "3-5 Game", sizeInt[0], sizeInt[1]);
         if(grade == 2)
             game = new Game68(names, "6-8 Game", sizeInt[0], sizeInt[1]);
+
+        frame.dispose();
     }
 }
