@@ -233,22 +233,25 @@ public class WoodsSimulationMenu implements ActionListener{
     private static void createMovementDropDown() {
         //display text
         radioButtonsText = new JLabel("Select the movement procedure.");
-        radioButtonsText.setBounds(110, 460, 260, 40);
+        radioButtonsText.setBounds(0, 460, sizeX, 40);
         radioButtonsText.setHorizontalAlignment(0); //center text
 
         //Create a button for each movement procedure
         randomMP = new JRadioButton("Random");
         randomMP.setActionCommand("0");
-        randomMP.setBounds(200,500,100,30);
+        randomMP.setBounds(0,500,sizeX,30);
+        randomMP.setHorizontalAlignment(0);
         randomMP.setSelected(true);
 
         otherMP = new JRadioButton("RandomSometimes");
         otherMP.setActionCommand("1");
-        otherMP.setBounds(200,530,100,30);
+        otherMP.setBounds(0,530,sizeX,30);
+        otherMP.setHorizontalAlignment(0);
         
         anotherMP = new JRadioButton("StickTogether");
         anotherMP.setActionCommand("2");
-        anotherMP.setBounds(200,560,100,30);
+        anotherMP.setBounds(0,560,sizeX,30);
+        anotherMP.setHorizontalAlignment(0);
 
         //group the radio buttons
         radioButtonGroup = new ButtonGroup();
