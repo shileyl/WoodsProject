@@ -14,7 +14,7 @@ public class GameK2 extends Game {
         super.gameUpdate();
     }
 
-    protected boolean checkForWin() {
+    protected boolean checkForWin() {//you know what it do
         if(players[0].x == players[1].x)
             if(players[0].y == players[1].y){
                 new GameOver(instance);
