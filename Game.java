@@ -20,6 +20,9 @@ public class Game {
     protected int boardSizeX;
     protected int boardSizeY;
 
+    protected int frame = 0;
+    protected int timerMilliDelay;
+    protected int timerMilliDefault = 50;
 
     public static Game instance;
 
@@ -32,6 +35,7 @@ public class Game {
         this.boardSizeY = boardSizeY;
 
         instance = this;
+        timerMilliDelay = timerMilliDefault;
 
         //the amount of players
         numPlayers = playerNames.length;
@@ -52,12 +56,14 @@ public class Game {
         //create game update loop
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                gameUpdate();
+                if(frame % timerMilliDelay == 0)
+                    gameUpdate();
+                frame++;
             }
         };
 
         //Create a timer object that calls actionPerformed on the ActionListener every 1000 milliseconds
-        timer = new Timer(1000, taskPerformer);
+        timer = new Timer(1, taskPerformer);
         timer.start();
 
         //play music
@@ -78,6 +84,15 @@ public class Game {
 
         //tell the grid to update
         updateGrid();
+    }
+
+    public void setGameSpeed(float newSpeed) {
+        if(newSpeed < 0.1) {
+            timerMilliDelay = Integer.MAX_VALUE;
+            return;
+        }
+
+        timerMilliDelay = (int) (timerMilliDefault / newSpeed);
     }
     
     protected void updateGrid() {

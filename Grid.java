@@ -1,13 +1,16 @@
 import java.awt.Font;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
+import java.util.Hashtable;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 //Grid class is responsible for managing the Java Swing variables and anything related to displaying the game information
@@ -25,7 +28,9 @@ public class Grid {
     private ImageIcon threePlayersIcon;
     private ImageIcon fourPlayersIcon;
     private ImageIcon woodsButtons; 
-    private JButton restart;
+    
+    private JLabel speedSliderLabel;
+    private JSlider speedSlider;
 
     int sizeX, sizeY;
     int mouseX, mouseY;
@@ -40,6 +45,7 @@ public class Grid {
         createWindow(windowName);
         initializeGrid();
         createIcons();
+        createSpeedSlider();
     }
 
     void createWindow(String windowName) {
@@ -148,6 +154,47 @@ public class Grid {
         pStats[index].setBounds(x, y, w, h);
         panel.add(pStats[index]);
         pStats[index].setVisible(true);
+    }
+
+    void createSpeedSlider() {
+        int width = (int)(WoodsSimulationMenu.sizeX * 0.2 * 0.75);
+        int height = 50;
+        
+        int xPos = (int)(WoodsSimulationMenu.sizeX * 0.8 + ((WoodsSimulationMenu.sizeX * 0.2) - width)/2.0);
+        int yPos = WoodsSimulationMenu.sizeY - (int)(WoodsSimulationMenu.sizeY * 0.2);
+        
+        speedSliderLabel = new JLabel("Game Speed");
+        speedSliderLabel.setBounds(xPos + 5, yPos - 20, width - 5, 20);
+
+        speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 2);
+        speedSlider.setBounds(xPos, yPos, width, height);
+
+        speedSlider.setMinorTickSpacing(1);  //add little ticks on slider
+        speedSlider.setPaintTicks(true);
+        speedSlider.setPaintLabels(true);
+
+        Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
+        labelTable.put( 0, new JLabel("0") );    //add labels at different locations on the slider
+        labelTable.put( 2, new JLabel("1x") );
+        labelTable.put( 10, new JLabel("2x") );
+        labelTable.put( 20, new JLabel("3x") );
+        speedSlider.setLabelTable( labelTable );
+
+        speedSlider.addChangeListener(new ChangeListener(){
+            public void stateChanged(ChangeEvent e) {
+                sliderValueChanged();
+            }
+        });
+
+        speedSlider.setVisible(true);
+        speedSliderLabel.setVisible(true);
+        panel.add(speedSlider);
+        panel.add(speedSliderLabel);
+    }
+
+    void sliderValueChanged() {
+        float newSpeed = speedSlider.getValue() / 2.0f;
+        Game.instance.setGameSpeed(newSpeed);
     }
 
     //check to see if the x and y coordinates entered are valid
